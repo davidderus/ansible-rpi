@@ -1,0 +1,9 @@
+---
+
+- name: Playbook to configure a brand new Raspberry Pi
+
+  hosts: rpis
+  roles:
+    - common
+  remote_user: pi
+  become: yes
