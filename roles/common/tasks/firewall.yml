@@ -1,0 +1,7 @@
+- name: Allow ssh connections
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items:
+    - "{{ allowed_ports }}"
+
+- name: Enable firewall
+  ufw: state=enabled policy=deny

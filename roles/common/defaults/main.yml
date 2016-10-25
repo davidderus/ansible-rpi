@@ -1,0 +1,9 @@
+---
+
+# Packages
+required_packages:
+  - ufw
+  - fail2ban # Using defaults
+  - unattended-upgrades # Using defaults
+  - logwatch
+  - rsync
