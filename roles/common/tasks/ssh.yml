@@ -5,10 +5,10 @@
   with_items:
     - "{{ ssh_public_keys }}"
 
-- name: Change SSH port
+- name: Change the SSH port
   lineinfile: dest=/etc/ssh/sshd_config
               regexp="^Port\s"
-              line="Port {{ SSH_PORT }}"
+              line="Port {{ ssh_port }}"
               state=present
   notify: Restart ssh
 

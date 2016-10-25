@@ -6,3 +6,5 @@
   roles:
     - common
   become: yes
+  vars_files:
+    - variables.yml
