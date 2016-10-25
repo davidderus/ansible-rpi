@@ -13,8 +13,18 @@ Make Raspberry Pi up and running in a few command
 
 ## Dev with Vagrant
 
-Change `hosts` to `127.1.1.0:2222` _(see `vagrant up` output for exact port)_ and run:
+Run:
 
 ```
 ansible-playbook playbook.yml -u vagrant --private-key .vagrant/machines/default/virtualbox/private_key
+```
+
+## Usage
+
+First update the `hosts` file to target your Rpis.
+
+Then run:
+
+```
+ansible-playbook playbook.yml
 ```
