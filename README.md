@@ -23,8 +23,8 @@ ansible-playbook playbook.yml -u vagrant --private-key .vagrant/machines/default
 
 First update the `hosts` file to target your Rpis.
 
-Then run:
+Then the first time run:
 
 ```
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml -u pi
 ```
