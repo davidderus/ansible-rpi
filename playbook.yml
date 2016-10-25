@@ -1,0 +1,10 @@
+---
+
+- name: Playbook to configure a brand new Raspberry Pi
+
+  hosts: rpis
+  roles:
+    - common
+  become: yes
+  vars_files:
+    - variables.yml

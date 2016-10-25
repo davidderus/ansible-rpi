@@ -1,0 +1,9 @@
+---
+
+- include: base.yml
+- include: ssh.yml
+- include: firewall.yml
+- include: postfix.yml
+- include: logwatch.yml
+- include: wifi.yml
+  when: with_wifi

@@ -1,0 +1,29 @@
+---
+
+# New Rpi identity
+rpi_user_name: neo
+rpi_user_password: $CHANGE_ME$Ovaexae2queimeerahraashahchah5aiyeexae1ahi3aiwiek3ohFaib3gahpooWoodah8que8chiephureghang7Eiz4baig0BooshahCacha3oyeiYeu6Wo1sheiph
+
+# Logwatch
+
+logwatch_email: youremail@example.com
+
+# SSH
+
+ssh_port: 4480
+ssh_public_keys:
+  - ~/.ssh/id_rsa.pub
+
+# Firewall
+
+allowed_ports:
+  - 4480
+
+# Wifi handling (disabled by default)
+
+with_wifi: False
+wifi_ssid: my_ssid
+wifi_password: my_password
+wifi_proto: RSN
+wifi_key: WPA-PSK
+wifi_pairwise: CCMP
