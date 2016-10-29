@@ -20,5 +20,5 @@
   service: name=aria2 enabled=true state=started
 
 - name: Allow rpc connections
-  ufw: rule=allow port={{ rpc_port }} proto=tcp
-  when: with_external_access
+  ufw: rule=allow port={{ aria2_rpc_port }} proto=tcp
+  when: aria2_rpc_enabled

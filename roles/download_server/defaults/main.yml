@@ -1,7 +1,5 @@
 ---
 
-with_external_access: False
-
 ds_user_name: download_server
 ds_user_group: downloads
 ds_downloads_directory: /home/{{ ds_user_name }}/downloads
