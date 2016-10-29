@@ -1,10 +1,10 @@
 ---
 
-- name: Update APT package cache
-  apt: update_cache=yes cache_valid_time=3600
-
 - name: Add Kodi Repo if not present
   apt_repository: repo={{ kodi_apt_repo }}
+
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
 
 - name: Install Kodi
   apt: state=installed pkg=kodi

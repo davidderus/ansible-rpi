@@ -1,4 +1,4 @@
-kodi_apt_repo: ppa:team-xbmc/ppa
+kodi_apt_repo: "deb http://http.debian.net/debian jessie-backports main"
 kodi_user_dir: $HOME/.kodi
 
 # Arrays of filepaths
