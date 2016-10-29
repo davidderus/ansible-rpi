@@ -5,7 +5,7 @@
         <default pathversion="1"></default>
 {% for source in kodi_source_files %}
         <source>
-            <name>{{ source | basename  }}</name>
+            <name>{{ source | basename }}</name>
             <path pathversion="1">{{ source }}</path>
             <allowsharing>true</allowsharing>
         </source>
@@ -15,7 +15,7 @@
         <default pathversion="1"></default>
 {% for source in kodi_source_music %}
         <source>
-            <name>{{ source | basename  }}</name>
+            <name>{{ source | basename }}</name>
             <path pathversion="1">{{ source }}</path>
             <allowsharing>true</allowsharing>
         </source>
@@ -25,7 +25,7 @@
         <default pathversion="1"></default>
 {% for source in kodi_source_pictures %}
         <source>
-            <name>{{ source | basename  }}</name>
+            <name>{{ source | basename }}</name>
             <path pathversion="1">{{ source }}</path>
             <allowsharing>true</allowsharing>
         </source>
@@ -45,7 +45,7 @@
         <default pathversion="1"></default>
 {% for source in kodi_source_videos %}
         <source>
-            <name>{{ source | basename  }}</name>
+            <name>{{ source | basename }}</name>
             <path pathversion="1">{{ source }}</path>
             <allowsharing>true</allowsharing>
         </source>
