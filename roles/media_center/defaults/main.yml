@@ -1,0 +1,10 @@
+kodi_apt_repo: ppa:team-xbmc/ppa
+kodi_user_dir: $HOME/.kodi
+
+# Arrays of filepaths
+# Inspired by https://github.com/cmprescott/ansible-role-kodi
+kodi_source_files: []
+kodi_source_music: []
+kodi_source_pictures: []
+kodi_source_programs: []
+kodi_source_videos: []
