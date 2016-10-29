@@ -39,3 +39,14 @@ wifi_pairwise: CCMP
 
 # By default rpi_user_password
 # aria2_rpc_token:
+
+
+#####################
+# Media Center Role #
+#####################
+
+# kodi_source_files: []
+# kodi_source_music: []
+# kodi_source_pictures: []
+# kodi_source_programs: []
+# kodi_source_videos: []
