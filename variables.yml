@@ -37,4 +37,5 @@ wifi_pairwise: CCMP
 # Download server Role #
 ########################
 
-aria2_rpc_enabled: True
+# By default rpi_user_password
+# aria2_rpc_token:
