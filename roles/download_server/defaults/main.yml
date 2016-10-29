@@ -1,0 +1,11 @@
+---
+
+ds_user_name: download_server
+ds_user_group: downloads
+ds_downloads_directory: /home/{{ ds_user_name }}/downloads
+
+aria2_conf_gist: https://gist.github.com/f0bdd4debdd854be10377403fafa7a53.git
+
+aria2_rpc_enabled: False
+aria2_rpc_token: "{{ rpi_user_password }}"
+aria2_rpc_port: 6800

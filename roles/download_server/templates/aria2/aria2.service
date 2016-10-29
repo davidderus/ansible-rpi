@@ -1,0 +1,13 @@
+[Unit]
+Description=Aria2 Download Manager Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/aria2c --conf-path=/home/{{ ds_user_name }}/.aria2/aria2.conf -D --enable-rpc --rpc-listen-all
+User={{ ds_user_name }}
+Group={{ ds_user_group }}
+WorkingDirectory={{ ds_downloads_directory }}
+
+[Install]
+WantedBy=multi-user.target
