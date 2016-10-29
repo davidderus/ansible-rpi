@@ -1,3 +1,5 @@
+# {{ ansible_managed }}
+
 [Unit]
 Description=Aria2 Download Manager Daemon
 After=network.target

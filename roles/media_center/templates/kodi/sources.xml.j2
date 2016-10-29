@@ -1,0 +1,54 @@
+<!-- {{ ansible_managed }} -->
+
+<sources>
+    <files>
+        <default pathversion="1"></default>
+{% for source in kodi_source_files %}
+        <source>
+            <name>{{ source | basename }}</name>
+            <path pathversion="1">{{ source }}</path>
+            <allowsharing>true</allowsharing>
+        </source>
+{% endfor %}
+    </files>
+    <music>
+        <default pathversion="1"></default>
+{% for source in kodi_source_music %}
+        <source>
+            <name>{{ source | basename }}</name>
+            <path pathversion="1">{{ source }}</path>
+            <allowsharing>true</allowsharing>
+        </source>
+{% endfor %}
+    </music>
+    <pictures>
+        <default pathversion="1"></default>
+{% for source in kodi_source_pictures %}
+        <source>
+            <name>{{ source | basename }}</name>
+            <path pathversion="1">{{ source }}</path>
+            <allowsharing>true</allowsharing>
+        </source>
+{% endfor %}
+    </pictures>
+    <programs>
+        <default pathversion="1"></default>
+{% for source in kodi_source_programs %}
+        <source>
+            <name>{{ source | basename }}</name>
+            <path pathversion="1">{{ source }}</path>
+            <allowsharing>true</allowsharing>
+        </source>
+{% endfor %}
+    </programs>
+    <video>
+        <default pathversion="1"></default>
+{% for source in kodi_source_videos %}
+        <source>
+            <name>{{ source | basename }}</name>
+            <path pathversion="1">{{ source }}</path>
+            <allowsharing>true</allowsharing>
+        </source>
+{% endfor %}
+    </video>
+</sources>
