@@ -1,0 +1,24 @@
+---
+
+- name: Install required packages
+  apt: state=installed pkg=aria2
+
+- name: Add new group for download server
+  group: state=present name={{ ds_user_group }}
+
+- name: Add new user for download server
+  user: name={{ ds_user_name }} group={{ ds_user_group }} comment="Aria2 Download Server" state=present
+
+- name: Make downloads directory
+  file: path={{ ds_downloads_directory }} state=directory owner={{ ds_user_name }} group={{ ds_user_group }} mode=0755
+
+- name: Copy aria2 configuration
+  template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} group={{ ds_user_group }} mode=0600
+  notify: Restart aria2
+
+- name: Enable aria2 daemon on boot
+  service: name=aria2 enabled=true state=started
+
+- name: Allow rpc connections
+  ufw: rule=allow port={{ rpc_port }} proto=tcp
+  when: with_external_access
