@@ -22,6 +22,7 @@ ssh_public_keys:
 
 allowed_ports:
   - 4480
+  - 6800
 
 # Wifi handling (disabled by default)
 
@@ -39,7 +40,7 @@ wifi_pairwise: CCMP
 
 # By default rpi_user_password
 # aria2_rpc_token:
-
+# aria2_rpc_port: 6800
 
 #####################
 # Media Center Role #
