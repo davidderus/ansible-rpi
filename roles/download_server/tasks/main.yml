@@ -12,6 +12,9 @@
 - name: Make downloads directory
   file: path={{ ds_downloads_directory }} state=directory owner={{ ds_user_name }} group={{ ds_user_group }} mode=0755
 
+- name: Make downloads directory
+  file: path=/home/{{ ds_user_name }}/.aria2 state=directory owner={{ ds_user_name }} group={{ ds_user_group }} mode=0755
+
 - name: Copy aria2 configuration
   template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} group={{ ds_user_group }} mode=0600
   notify: Restart aria2
@@ -22,3 +25,4 @@
 - name: Allow rpc connections
   ufw: rule=allow port={{ aria2_rpc_port }} proto=tcp
   when: aria2_rpc_enabled
+  ignore_errors: yes

@@ -8,6 +8,6 @@ aria2_conf_gist: https://gist.github.com/f0bdd4debdd854be10377403fafa7a53.git
 aria2_as_daemon: True
 
 aria2_rpc_enabled: False
-aria2_rpc_user_name: {{ rpi_user_name }}
-aria2_rpc_token: {{ rpi_user_password }}
+aria2_rpc_user_name: "{{ rpi_user_name }}"
+aria2_rpc_token: "{{ rpi_user_password }}"
 aria2_rpc_port: 6800
