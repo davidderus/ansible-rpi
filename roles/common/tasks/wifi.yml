@@ -1,4 +1,4 @@
 ---
 
 - name: Configure WIFI
-  template: src=wifi/wpa_supplicant.conf dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
+  template: src=wifi/wpa_supplicant.conf.j2 dest=/etc/wpa_supplicant/wpa_supplicant.conf mode=0600
