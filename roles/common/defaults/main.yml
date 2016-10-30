@@ -13,13 +13,14 @@ required_packages:
   - tmux
   - avahi-daemon
 
-with_wifi: False
-with_vim: False
-with_mosh: False
-
 rpi_host_name: rpi-{{ rpi_user_name }}
 
 rpi_locale:
   - "en_US.UTF-8 UTF-8"
 
 ssh_custom_banner: False
+
+with_wifi: False
+with_vim: False
+with_mosh: False
+with_automount: False

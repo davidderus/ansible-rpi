@@ -16,3 +16,5 @@
   when: with_vim
 - include: mosh.yml
   when: with_mosh
+- include: automount.yml
+  when: with_automount

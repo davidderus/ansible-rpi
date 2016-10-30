@@ -1,0 +1,18 @@
+---
+
+- name: Mount local devices by label
+  mount:
+    name: {{ item.path }}
+    src: LABEL={{ item.label }}
+    fstype: {{ item.type }}
+    state: mounted
+  with_items: "{{ automount_local_folders }}"
+
+- name: Mount remote folders
+  mount:
+    name: {{ item.path }}
+    src: {{ item.network_folder }}
+    fstype: {{ item.type|default('cifs') }}
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }}"
+    state: mounted
+  with_items: "{{ automount_network_folders }}"

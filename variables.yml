@@ -8,6 +8,10 @@
 rpi_user_name: neo
 rpi_user_password: $CHANGE_ME$Ovaexae2queimeerahraashahchah5aiyeexae1ahi3aiwiek3ohFaib3gahpooWoodah8que8chiephureghang7Eiz4baig0BooshahCacha3oyeiYeu6Wo1sheiph
 
+# Updating locales
+rpi_locale:
+  - "fr_FR.UTF-8 UTF-8"
+
 # Logwatch
 
 logwatch_email: youremail@example.com
@@ -40,8 +44,9 @@ with_vim: True
 
 # with_mosh: True
 
-rpi_locale:
-  - "fr_FR.UTF-8 UTF-8"
+with_automount: False
+automount_local_folders: []
+automount_network_folders: []
 
 ########################
 # Download server Role #
