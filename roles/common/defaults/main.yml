@@ -12,6 +12,7 @@ required_packages:
   - git
   - tmux
   - avahi-daemon
+  - zsh
 
 ssh_custom_banner: False
 

@@ -26,11 +26,15 @@
   command: locale-gen
   when: update_locale|changed
 
+- name: Install required packages
+  apt: state=installed pkg={{ item }}
+  with_items: "{{ required_packages }}"
+
 - name: Add new group for shared items (downloads and other roles)
   group: state=present name={{ rpi_shared_group }}
 
 - name: Create new Rpi owner
-  user: name={{ rpi_user_name }} groups={{ rpi_shared_group }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash append=yes
+  user: name={{ rpi_user_name }} groups={{ rpi_shared_group }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/zsh append=yes
 
 - name: Add user to sudoers
   lineinfile: dest=/etc/sudoers
@@ -38,6 +42,8 @@
               line="{{ rpi_user_name }} ALL=(ALL) ALL"
               state=present
 
-- name: Install required packages
-  apt: state=installed pkg={{ item }}
-  with_items: "{{ required_packages }}"
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ rpi_user_name }}/.oh-my-zsh
+
+- name: Setup default zshrc
+  copy: src=/home/{{ rpi_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0644
