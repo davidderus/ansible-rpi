@@ -28,8 +28,8 @@ ssh_custom_banner: True
 # Firewall
 
 allowed_ports:
-  - 4480
-  - 6800
+  - 4480 # SSH custom port
+  - 6800 # Aria2 Daemon port
 
 # Wifi handling (disabled by default)
 
@@ -45,19 +45,26 @@ with_vim: True
 # with_mosh: True
 
 # with_automount: True
-# automount_local_devices:
-#   - { name: '', label: '', type: '' }
 
+# Type is required. Mounted devices are available at /mnt/
+# automount_local_devices:
+#   - { name: 'mydevice', label: 'MY_DEVICE', type: 'ext4' }
+
+# Default type to cifs. Available at /media/
 # automount_network_folders:
-#   - { name: '', network_folder: '', type: '', domain: '', user: '', password: '' }
+#   - { name: 'mydrive', network_folder: '//192.168.0.10/mydrive', domain: 'WORKGROUP', user: 'my_name', password: 'my_password' }
 
 ########################
 # Download server Role #
 ########################
 
-# By default rpi_user_password
+# By default rpi_user_password is the prc token
 # aria2_rpc_token:
+
 # aria2_rpc_port: 6800
+
+# ds_downloads_directory (by default: /home/{{ ds_user_name }}/downloads)
+# ds_downloads_directory: /media/mydrive
 
 #####################
 # Media Center Role #
