@@ -2,6 +2,7 @@
 
 - name: Add Kodi Repo if not present
   apt_repository: repo={{ kodi_apt_repo }}
+  when: ansible_os_family == 'Debian' and ansible_distribution_version|int == 8
 
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
@@ -16,4 +17,4 @@
     - "{{ kodi_user_dir }}/userdata"
 
 - name: Build sources file
-  template: src=sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600
+  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600
