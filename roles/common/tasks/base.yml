@@ -3,15 +3,23 @@
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
-- name: Updating distribution.
+- name: Updating distribution
   apt: upgrade=yes
 
-- name: Updating hostname.
+- name: Updating hostname
   hostname: name={{ rpi_host_name }}
+  register: hostname_change
+
+- name: Update /etc/hosts
+  lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1' line='127.0.1.1 {{ rpi_host_name }}' owner=root group=root mode=0644
+
+- name: Reload facts
+  setup:
+  when: hostname_change.changed
 
 - name: Setup locale
   lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
-  with_items: rpi_locale
+  with_items: "{{ rpi_locale }}"
   register: update_locale
 
 - name: Generate locales
@@ -22,7 +30,7 @@
   group: state=present name={{ rpi_shared_group }}
 
 - name: Create new Rpi owner
-  user: name={{ rpi_user_name }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash
+  user: name={{ rpi_user_name }} groups={{ rpi_shared_group }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash append=yes
 
 - name: Add user to sudoers
   lineinfile: dest=/etc/sudoers
@@ -33,6 +41,3 @@
 - name: Install required packages
   apt: state=installed pkg={{ item }}
   with_items: "{{ required_packages }}"
-
-- name: Clean unused packages
-  apt: autoremove=yes purge=yes

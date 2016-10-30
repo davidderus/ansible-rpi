@@ -12,7 +12,7 @@
 
 - name: Mount local devices by label
   mount:
-    name: "{{ item.name }}"
+    name: "/mnt/{{ item.name }}"
     src: "LABEL={{ item.label }}"
     fstype: "{{ item.type }}"
     opts: "gid={{ rpi_shared_group }}"
@@ -25,7 +25,7 @@
 
 - name: Mount remote folders
   mount:
-    name: "{{ item.name }}"
+    name: "/media/{{ item.name }}"
     src: "{{ item.network_folder }}"
     fstype: "{{ item.type|default('cifs') }}"
     opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,gid={{ rpi_shared_group }},_netdev"

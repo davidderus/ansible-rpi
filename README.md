@@ -47,5 +47,5 @@ First update the `hosts` file to target your Rpis.
 Then the first time run:
 
 ```
-ansible-playbook playbook.yml -u pi
+ansible-playbook playbook.yml -u pi --ask-become-pass
 ```

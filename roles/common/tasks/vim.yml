@@ -4,7 +4,7 @@
   apt: pkg=vim state=present
 
 - name: Set Vim as default editor
-  alternatives: "link={{ item }} target=/usr/bin/vim.basic"
+  alternatives: "name={{ item }} path=/usr/bin/vim.basic"
   with_items:
     - editor
     - ex
