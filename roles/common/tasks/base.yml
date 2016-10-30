@@ -3,7 +3,7 @@
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
-- name: Updating distribution
+- name: Upgrading distribution
   apt: upgrade=yes
 
 - name: Updating hostname
@@ -44,6 +44,8 @@
 
 - name: Clone oh-my-zsh repo
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ rpi_user_name }}/.oh-my-zsh
+  become: yes
+  become_user: "{{ rpi_user_name }}"
 
 - name: Setup default zshrc
-  copy: src=/home/{{ rpi_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0644
+  copy: remote_src=true src=/home/{{ rpi_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0644

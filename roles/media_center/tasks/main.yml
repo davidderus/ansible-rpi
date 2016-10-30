@@ -17,4 +17,4 @@
     - "{{ kodi_user_dir }}/userdata"
 
 - name: Build sources file
-  template: src=sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600
+  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600

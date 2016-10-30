@@ -11,8 +11,9 @@ required_packages:
   - curl
   - git
   - tmux
-  - avahi-daemon
-  - zsh
+  - avahi-daemon # Using defaults
+  - zsh # With oh-my-zsh
+  - tree
 
 ssh_custom_banner: False
 
