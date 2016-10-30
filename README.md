@@ -27,10 +27,6 @@ Make Raspberry Pi up and running in a few command
 
 - `swarm_node`: Run Docker containers in a Rpis Swarm
 
-### TODO
-
-- Add local or remote mount points
-
 ## Dev with Vagrant
 
 Run:
