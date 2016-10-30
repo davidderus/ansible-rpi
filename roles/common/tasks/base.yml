@@ -9,6 +9,15 @@
 - name: Updating hostname.
   hostname: name={{ rpi_host_name }}
 
+- name: Setup locale
+  lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
+  with_items: rpi_locale
+  register: update_locale
+
+- name: Generate locales
+  command: locale-gen
+  when: update_locale|changed
+
 - name: Create new Rpi owner
   user: name={{ rpi_user_name }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash
 
@@ -24,12 +33,3 @@
 
 - name: Clean unused packages
   apt: autoremove=yes purge=yes
-
-- name: Setup locale
-  lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
-  with_items: rpi_locale
-  register: update_locale
-
-- name: Generate locales
-  command: locale-gen
-  when: update_locale|changed
