@@ -7,3 +7,7 @@ required_packages:
   - unattended-upgrades # Using defaults
   - logwatch
   - rsync
+
+with_wifi: False
+
+with_vim: False

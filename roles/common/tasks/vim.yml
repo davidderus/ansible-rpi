@@ -1,0 +1,16 @@
+---
+
+- name: Install Vim
+  apt: pkg=vim state=present
+
+- name: Set Vim as default editor
+  update_alternatives: "link={{ item }} target=/usr/bin/vim.basic"
+  with_items:
+    - editor
+    - ex
+    - rview
+    - rvim
+    - vi
+    - view
+    - vim
+    - vimdiff

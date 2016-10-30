@@ -7,3 +7,5 @@
 - include: logwatch.yml
 - include: wifi.yml
   when: with_wifi
+- include: vim.yml
+  when: with_vim

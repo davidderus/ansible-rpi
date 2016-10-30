@@ -33,6 +33,8 @@ wifi_proto: RSN
 wifi_key: WPA-PSK
 wifi_pairwise: CCMP
 
+with_vim: True
+
 
 ########################
 # Download server Role #
