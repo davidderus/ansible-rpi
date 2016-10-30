@@ -50,6 +50,6 @@
   become_user: "{{ rpi_user_name }}"
 
 - name: Change zsh theme
-  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"blinks\"" state=present
+  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ rpi_zsh_theme|default('junkfood') }}\"" state=present
   become: yes
   become_user: "{{ rpi_user_name }}"

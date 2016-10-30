@@ -12,6 +12,8 @@ rpi_user_password: $CHANGE_ME$Ovaexae2queimeerahraashahchah5aiyeexae1ahi3aiwiek3
 rpi_locale:
   - "fr_FR.UTF-8 UTF-8"
 
+# rpi_zsh_theme: robbyrussell
+
 # Logwatch
 
 logwatch_email: youremail@example.com
