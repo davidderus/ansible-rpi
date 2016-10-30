@@ -1,5 +1,5 @@
 kodi_apt_repo: "deb http://http.debian.net/debian jessie-backports main"
-kodi_user_dir: $HOME/.kodi
+kodi_user_dir: /home/{{ rpi_user_name }}/.kodi
 
 # Arrays of filepaths
 # Inspired by https://github.com/cmprescott/ansible-role-kodi

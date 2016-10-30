@@ -1,9 +1,20 @@
 ---
 
+# Required
+
 - include: base.yml
 - include: ssh.yml
 - include: firewall.yml
 - include: postfix.yml
 - include: logwatch.yml
+
+# Optionnals
+
 - include: wifi.yml
   when: with_wifi
+- include: vim.yml
+  when: with_vim
+- include: mosh.yml
+  when: with_mosh
+- include: automount.yml
+  when: with_automount

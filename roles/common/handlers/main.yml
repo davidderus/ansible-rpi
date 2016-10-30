@@ -2,3 +2,6 @@
 
 - name: Restart ssh
   service: name=ssh state=restarted
+
+- name: Reload firewall
+  ufw: state=reloaded

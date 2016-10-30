@@ -1,0 +1,33 @@
+---
+
+- name: Install automount packages
+  apt: state=installed pkg={{ item }}
+  with_items:
+    - samba
+    - cifs-utils
+
+- name: Create local devices folders
+  file: dest=/mnt/{{ item.name }} state=directory mode=0770
+  with_items: "{{ automount_network_folders }}"
+
+- name: Mount local devices by label
+  mount:
+    name: "/mnt/{{ item.name }}"
+    src: "LABEL={{ item.label }}"
+    fstype: "{{ item.type }}"
+    opts: "gid={{ rpi_shared_group }},umask=0007"
+    state: mounted
+  with_items: "{{ automount_local_devices }}"
+
+- name: Create remote folders
+  file: dest=/media/{{ item.name }} state=directory mode=0770
+  with_items: "{{ automount_network_folders }}"
+
+- name: Mount remote folders
+  mount:
+    name: "/media/{{ item.name }}"
+    src: "{{ item.network_folder }}"
+    fstype: "{{ item.type|default('cifs') }}"
+    opts: "file_mode=0660,dir_mode=0770,domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_shared_group }},_netdev"
+    state: mounted
+  with_items: "{{ automount_network_folders }}"

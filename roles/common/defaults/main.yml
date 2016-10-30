@@ -7,3 +7,20 @@ required_packages:
   - unattended-upgrades # Using defaults
   - logwatch
   - rsync
+  - htop
+  - curl
+  - git
+  - tmux
+  - avahi-daemon # Using defaults
+  - zsh # With oh-my-zsh
+  - tree
+
+ssh_custom_banner: False
+
+with_wifi: False
+with_vim: False
+with_mosh: False
+with_automount: False
+
+automount_local_devices: []
+automount_network_folders: []
