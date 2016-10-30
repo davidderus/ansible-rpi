@@ -37,15 +37,19 @@
   user: name={{ rpi_user_name }} groups={{ rpi_shared_group }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/zsh append=yes
 
 - name: Add user to sudoers
-  lineinfile: dest=/etc/sudoers
-              regexp="{{ rpi_user_name }} ALL"
-              line="{{ rpi_user_name }} ALL=(ALL) ALL"
-              state=present
+  lineinfile: dest=/etc/sudoers regexp="{{ rpi_user_name }} ALL" line="{{ rpi_user_name }} ALL=(ALL) ALL" state=present
 
 - name: Clone oh-my-zsh repo
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ rpi_user_name }}/.oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
   become: yes
   become_user: "{{ rpi_user_name }}"
 
 - name: Setup default zshrc
-  copy: remote_src=true src=/home/{{ rpi_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0644
+  copy: remote_src=true src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes mode=0644
+  become: yes
+  become_user: "{{ rpi_user_name }}"
+
+- name: Change zsh theme
+  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"blinks\"" state=present
+  become: yes
+  become_user: "{{ rpi_user_name }}"

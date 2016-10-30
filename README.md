@@ -12,11 +12,11 @@ Make Raspberry Pi up and running in a few command
   - Locale setup
   - Hostname update
   - Adding some useful packages (*curl, vim, tmux, git, avahi-daemon…*)
-  - UFW for firewall rules
-  - Logwatch for system status emails
+  - UFW firewall rules allowing user-specified ports
+  - Logwatch for system status emails (*via Postfix*)
   - SSH with key-only authentification
   - Zeroconf with Avahi Daemon
-  - `oh-my-zsh` install
+  - `oh-my-zsh` install and vim as default editor
   - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
   - Optionnal custom SSH banner
   - Optionnal Wifi config
@@ -36,6 +36,7 @@ Make Raspberry Pi up and running in a few command
 ### TODO
 
 - Safe credential storage
+- Use as an ansible module
 
 ## Dev with Vagrant
 
