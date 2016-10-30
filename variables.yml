@@ -46,17 +46,19 @@ with_vim: True
 
 # with_automount: True
 
-# Type is required. Mounted devices are available at /mnt/
+# Type is required. Mounted devices are available at /mnt/ for shared_group
 # automount_local_devices:
 #   - { name: 'mydevice', label: 'MY_DEVICE', type: 'ext4' }
 
-# Default type to cifs. Available at /media/
+# Default type to cifs. Available at /media/ for shared_group
 # automount_network_folders:
 #   - { name: 'mydrive', network_folder: '//192.168.0.10/mydrive', domain: 'WORKGROUP', user: 'my_name', password: 'my_password' }
 
 ########################
 # Download server Role #
 ########################
+
+# Creates a dedicated user
 
 # By default rpi_user_password is the prc token
 # aria2_rpc_token:
@@ -69,6 +71,8 @@ with_vim: True
 #####################
 # Media Center Role #
 #####################
+
+# Does not create a dedicated user (user rpi one)
 
 # kodi_source_files: []
 # kodi_source_music: []

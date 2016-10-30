@@ -1,0 +1,7 @@
+---
+
+rpi_host_name: "rpi_{{ rpi_user_name }}""
+rpi_shared_group: "rpi_{{ rpi_user_name }}_shared"
+
+rpi_locale:
+  - "en_US.UTF-8 UTF-8"

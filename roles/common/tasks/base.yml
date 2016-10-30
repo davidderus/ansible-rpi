@@ -18,6 +18,9 @@
   command: locale-gen
   when: update_locale|changed
 
+- name: Add new group for shared items (downloads and other roles)
+  group: state=present name={{ rpi_shared_group }}
+
 - name: Create new Rpi owner
   user: name={{ rpi_user_name }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash
 

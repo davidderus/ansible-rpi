@@ -15,6 +15,7 @@
     name: {{ item.name }}
     src: LABEL={{ item.label }}
     fstype: {{ item.type }}
+    opts: "gid={{ rpi_shared_group }}"
     state: mounted
   with_items: "{{ automount_local_devices }}"
 
@@ -27,6 +28,6 @@
     name: {{ item.name }}
     src: {{ item.network_folder }}
     fstype: {{ item.type|default('cifs') }}
-    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_user_name }},_netdev"
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,gid={{ rpi_shared_group }},_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"
