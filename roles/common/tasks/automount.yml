@@ -12,9 +12,9 @@
 
 - name: Mount local devices by label
   mount:
-    name: {{ item.name }}
-    src: LABEL={{ item.label }}
-    fstype: {{ item.type }}
+    name: "{{ item.name }}"
+    src: "LABEL={{ item.label }}"
+    fstype: "{{ item.type }}"
     opts: "gid={{ rpi_shared_group }}"
     state: mounted
   with_items: "{{ automount_local_devices }}"
@@ -25,9 +25,9 @@
 
 - name: Mount remote folders
   mount:
-    name: {{ item.name }}
-    src: {{ item.network_folder }}
-    fstype: {{ item.type|default('cifs') }}
+    name: "{{ item.name }}"
+    src: "{{ item.network_folder }}"
+    fstype: "{{ item.type|default('cifs') }}"
     opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,gid={{ rpi_shared_group }},_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"
