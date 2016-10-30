@@ -7,7 +7,7 @@
     - cifs-utils
 
 - name: Create local devices folders
-  file: dest=/mnt/{{ item.name }} state=directory
+  file: dest=/mnt/{{ item.name }} state=directory  mode=0770
   with_items: "{{ automount_network_folders }}"
 
 - name: Mount local devices by label
@@ -20,7 +20,7 @@
   with_items: "{{ automount_local_devices }}"
 
 - name: Create remote folders
-  file: dest=/media/{{ item.name }} state=directory
+  file: dest=/media/{{ item.name }} state=directory  mode=0770
   with_items: "{{ automount_network_folders }}"
 
 - name: Mount remote folders
