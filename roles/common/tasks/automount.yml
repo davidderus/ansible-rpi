@@ -15,7 +15,7 @@
     name: "/mnt/{{ item.name }}"
     src: "LABEL={{ item.label }}"
     fstype: "{{ item.type }}"
-    opts: "gid={{ rpi_shared_group }},umask=0007"
+    opts: "gid={{ rpi_shared_group }}"
     state: mounted
   with_items: "{{ automount_local_devices }}"
 
@@ -28,6 +28,6 @@
     name: "/media/{{ item.name }}"
     src: "{{ item.network_folder }}"
     fstype: "{{ item.type|default('cifs') }}"
-    opts: "file_mode=0660,dir_mode=0770,domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_shared_group }},_netdev"
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_shared_group }},_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"

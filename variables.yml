@@ -67,8 +67,8 @@ with_vim: True
 
 # aria2_rpc_port: 6800
 
-# ds_downloads_directory (by default: /home/{{ ds_user_name }}/downloads)
-# ds_downloads_directory: /media/mydrive
+# ds_downloads_root (by default: /home/{{ ds_user_name }}). Will create a `downloads` directory to put downloaded files in.
+# ds_downloads_root: /media/mydrive
 
 #####################
 # Media Center Role #

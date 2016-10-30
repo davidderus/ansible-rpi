@@ -1,7 +1,8 @@
 ---
 
 ds_user_name: download_server
-ds_downloads_directory: /home/{{ ds_user_name }}/downloads
+ds_downloads_root: /home/{{ ds_user_name }}
+ds_downloads_directory: {{ ds_downloads_root }}/downloads
 
 aria2_rpc_enabled: False
 aria2_rpc_token: "{{ rpi_user_password }}"
