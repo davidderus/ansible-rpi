@@ -1,7 +1,12 @@
+---
+
 - name: Allow specific ports connections
   ufw: rule=allow port={{ item }} proto=tcp
   with_items:
     - "{{ allowed_ports }}"
+
+- name: Avahi Zeroconf Daemon
+  ufw: rule=allow port=5353 proto=udp name=Bonjour
 
 - name: Enable firewall
   ufw: state=enabled policy=deny
