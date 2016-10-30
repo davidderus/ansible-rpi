@@ -18,6 +18,9 @@ ssh_port: 4480
 ssh_public_keys:
   - ~/.ssh/id_rsa.pub
 
+# See roles/common/templates/ssh/banner.j2
+ssh_custom_banner: True
+
 # Firewall
 
 allowed_ports:

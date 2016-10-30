@@ -26,3 +26,15 @@
               line="PasswordAuthentication no"
               state=present
   notify: Restart ssh
+
+- name: Add SSH banner
+  template: src=ssh/banner.j2 dest=/etc/issue.net owner=root group=root mode=0644
+  when: ssh_custom_banner
+
+- name: Enable SSH banner
+  lineinfile: dest=/etc/ssh/sshd_config
+              regexp="^#Banner"
+              line="Banner /etc/issue.net"
+              state=present
+  when: ssh_custom_banner
+  notify: Restart ssh
