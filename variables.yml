@@ -44,9 +44,12 @@ with_vim: True
 
 # with_mosh: True
 
-with_automount: False
-automount_local_folders: []
-automount_network_folders: []
+# with_automount: True
+# automount_local_devices:
+#   - { name: '', label: '', type: '' }
+
+# automount_network_folders:
+#   - { name: '', network_folder: '', type: '', domain: '', user: '', password: '' }
 
 ########################
 # Download server Role #

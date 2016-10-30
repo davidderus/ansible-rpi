@@ -1,16 +1,24 @@
 ---
 
+- name: Create local devices folders
+  file: dest=/mnt/{{ item.name }} state=directory
+  with_items: "{{ automount_network_folders }}"
+
 - name: Mount local devices by label
   mount:
-    name: {{ item.path }}
+    name: {{ item.name }}
     src: LABEL={{ item.label }}
     fstype: {{ item.type }}
     state: mounted
-  with_items: "{{ automount_local_folders }}"
+  with_items: "{{ automount_local_devices }}"
+
+- name: Create remote folders
+  file: dest=/media/{{ item.name }} state=directory
+  with_items: "{{ automount_network_folders }}"
 
 - name: Mount remote folders
   mount:
-    name: {{ item.path }}
+    name: {{ item.name }}
     src: {{ item.network_folder }}
     fstype: {{ item.type|default('cifs') }}
     opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }}"
