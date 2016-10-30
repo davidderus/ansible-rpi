@@ -29,9 +29,7 @@ Make Raspberry Pi up and running in a few command
 
 ### TODO
 
-- Conditionnal Kodi backport only for Debian
 - Add local or remote mount points
-- Change ssh banner
 
 ## Dev with Vagrant
 
