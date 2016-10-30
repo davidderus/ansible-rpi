@@ -9,6 +9,9 @@ Make Raspberry Pi up and running in a few command
 ### Done
 
 - `common`: Setup the Rpi with with updates and better security
+  - Locale setup
+  - Hostname update
+  - Adding some useful packages (*curl, vim, tmux, git, avahi-daemon…*)
   - UFW for firewall rules
   - Logwatch for system status emails
   - SSH with key-only authentification
@@ -26,9 +29,9 @@ Make Raspberry Pi up and running in a few command
 
 ### TODO
 
-- Mosh support for remote login (*+ ufw rules*)
-- Vim editor by default
 - Conditionnal Kodi backport only for Debian
+- Add local or remote mount points
+- Change ssh banner
 
 ## Dev with Vagrant
 

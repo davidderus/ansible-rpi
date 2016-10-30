@@ -3,8 +3,11 @@
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
-- name: Upgrade APT to the latest packages
-  apt: upgrade=safe
+- name: Updating distribution.
+  apt: upgrade=yes
+
+- name: Updating hostname.
+  hostname: name={{ rpi_host_name }}
 
 - name: Create new Rpi owner
   user: name={{ rpi_user_name }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/bash
@@ -18,3 +21,15 @@
 - name: Install required packages
   apt: state=installed pkg={{ item }}
   with_items: "{{ required_packages }}"
+
+- name: Clean unused packages
+  apt: autoremove=yes purge=yes
+
+- name: Setup locale
+  lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
+  with_items: rpi_locale
+  register: update_locale
+
+- name: Generate locales
+  command: locale-gen
+  when: update_locale|changed

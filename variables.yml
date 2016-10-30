@@ -37,6 +37,8 @@ with_vim: True
 
 # with_mosh: True
 
+rpi_locale:
+  - "fr_FR.UTF-8 UTF-8"
 
 ########################
 # Download server Role #
