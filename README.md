@@ -6,10 +6,29 @@ Make Raspberry Pi up and running in a few command
 
 ## Roles
 
-- [X] `common`: Setup the Rpi with with updates and better security
-- [X] `download_server`: Turn the Rpi in a download server for ddl and torrents
-- [X] `media_center`: Turn your Raspberry into a decent customizable media center
-- [] `swarm_node`: Run Docker containers in a Rpis Swarm
+### Done
+
+- `common`: Setup the Rpi with with updates and better security
+  - UFW for firewall rules
+  - Logwatch for system status emails
+  - SSH with key-only authentification
+  - Optionnal Wifi config
+- `download_server`: Turn the Rpi in a download server for ddl and torrents
+  - Aria2 daemon
+  - RPC interface for remote monitoring
+- `media_center`: Turn your Raspberry into a decent customizable media center
+  - Kodi basic installation
+  - Dynamic sources creation
+
+### Incoming
+
+- `swarm_node`: Run Docker containers in a Rpis Swarm
+
+### TODO
+
+- Mosh support for remote login (*+ ufw rules*)
+- Vim editor by default
+- Conditionnal Kodi backport only for Debian
 
 ## Dev with Vagrant
 
