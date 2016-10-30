@@ -1,4 +1,4 @@
-- name: Allow ssh connections
+- name: Allow specific ports connections
   ufw: rule=allow port={{ item }} proto=tcp
   with_items:
     - "{{ allowed_ports }}"

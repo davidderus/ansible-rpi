@@ -35,6 +35,8 @@ wifi_pairwise: CCMP
 
 with_vim: True
 
+# with_mosh: True
+
 
 ########################
 # Download server Role #

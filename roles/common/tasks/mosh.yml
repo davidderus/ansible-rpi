@@ -1,0 +1,7 @@
+---
+
+- name: Install Mosh
+  apt: pkg=mosh state=present
+
+- name: Allow specific ports connections
+  ufw: rule=allow port=60000:61000 proto=udp name=Mosh
