@@ -5,3 +5,6 @@
 
 - name: Allow specific ports connections
   ufw: rule=allow port=60000:61000 proto=udp name=Mosh
+
+- debug: msg="Remember to use ssh port {{ ssh_port }} in order to establish a mosh connection"
+  when: ssh_port is defined

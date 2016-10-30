@@ -11,6 +11,7 @@
               line="Port {{ ssh_port }}"
               state=present
   notify: Restart ssh
+  when: ssh_port is defined
 
 - name: Disallow root SSH access
   lineinfile: dest=/etc/ssh/sshd_config
