@@ -27,6 +27,6 @@
     name: {{ item.name }}
     src: {{ item.network_folder }}
     fstype: {{ item.type|default('cifs') }}
-    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }}"
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_user_name }},_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"
