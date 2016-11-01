@@ -8,9 +8,6 @@
 
   become: yes
 
-  vars_files:
-    - variables.yml
-
 - name: Setup and manage a download server
 
   hosts: download_servers
@@ -18,6 +15,3 @@
     - download_server
 
   become: yes
-
-  vars_files:
-    - variables.yml

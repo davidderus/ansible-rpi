@@ -43,8 +43,11 @@ Make Raspberry Pi up and running in a few command
 ### With examples
 
 ```
+# First
 cp hosts.inc hosts
-cp variables.yml.inc variables.yml
+
+# Then
+cp variables.yml.inc host_vars/my-host.yml
 ```
 
 ### Usage
@@ -54,7 +57,7 @@ First update the `hosts` file to target your Rpis.
 Then the first time run:
 
 ```
-ansible-playbook playbook.yml -u pi --ask-become-pass
+ansible-playbook playbook.yml -u pi --ask-pass
 ```
 
 ### Dev with Vagrant
