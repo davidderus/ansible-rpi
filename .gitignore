@@ -1,2 +1,5 @@
 .vagrant
 playbook.retry
+
+hosts
+variables.yml
