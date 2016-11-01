@@ -38,7 +38,26 @@ Make Raspberry Pi up and running in a few command
 - Safe credential storage
 - Use as an ansible module
 
-## Dev with Vagrant
+## Setup
+
+### With examples
+
+```
+cp hosts.inc hosts
+cp variables.yml.inc variables.yml
+```
+
+### Usage
+
+First update the `hosts` file to target your Rpis.
+
+Then the first time run:
+
+```
+ansible-playbook playbook.yml -u pi --ask-become-pass
+```
+
+### Dev with Vagrant
 
 First run:
 
@@ -56,14 +75,4 @@ ansible all -m ping -u neo
 
 # Execute updated playbook
 ansible-playbook playbook.yml -u neo --ask-become-pass
-```
-
-## Usage
-
-First update the `hosts` file to target your Rpis.
-
-Then the first time run:
-
-```
-ansible-playbook playbook.yml -u pi --ask-become-pass
 ```

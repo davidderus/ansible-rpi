@@ -1,10 +1,23 @@
 ---
 
-- name: Playbook to configure a brand new Raspberry Pi
+- name: Configure and securise any Rpi
 
-  hosts: rpis
+  hosts: all
   roles:
     - common
+
   become: yes
+
+  vars_files:
+    - variables.yml
+
+- name: Setup and manage a download server
+
+  hosts: download_servers
+  roles:
+    - download_server
+
+  become: yes
+
   vars_files:
     - variables.yml
