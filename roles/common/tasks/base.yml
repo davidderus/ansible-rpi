@@ -41,18 +41,3 @@
 
 - name: Add user to sudoers
   lineinfile: dest=/etc/sudoers regexp="{{ rpi_user_name }} ALL" line="{{ rpi_user_name }} ALL=(ALL) ALL" state=present
-
-- name: Clone oh-my-zsh repo
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
-  become: yes
-  become_user: "{{ rpi_user_name }}"
-
-- name: Setup default zshrc
-  copy: remote_src=true src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes mode=0644
-  become: yes
-  become_user: "{{ rpi_user_name }}"
-
-- name: Change zsh theme
-  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ rpi_zsh_theme|default('junkfood') }}\"" state=present
-  become: yes
-  become_user: "{{ rpi_user_name }}"

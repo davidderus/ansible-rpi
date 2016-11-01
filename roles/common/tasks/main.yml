@@ -18,3 +18,7 @@
   when: with_mosh
 - include: automount.yml
   when: with_automount
+
+# Other
+
+- include: zsh.yml
