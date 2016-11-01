@@ -28,6 +28,6 @@
     name: "/media/{{ item.name }}"
     src: "{{ item.network_folder }}"
     fstype: "{{ item.type|default('cifs') }}"
-    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,uid={{ rpi_user_name }},gid={{ rpi_shared_group }},_netdev"
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,noperm,_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"
