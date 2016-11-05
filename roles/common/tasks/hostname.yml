@@ -1,0 +1,23 @@
+---
+
+- name: Updating hostname
+  hostname: name={{ rpi_host_name }}
+  register: hostname_change
+
+- name: Update /etc/hosts (IPv4)
+  lineinfile: dest=/etc/hosts
+              regexp="^127\.0\.1\.1"
+              line="127.0.0.1{{'\t'}}{{ rpi_host_name }}{{'\t'}}localhost"
+              backup=yes
+              state=present
+
+- name: Update /etc/hosts (IPv6)
+  lineinfile: dest=/etc/hosts
+              regexp="^::1"
+              line="::1{{'\t\t'}}{{ rpi_host_name }}{{'\t'}}localhost ip6-localhost ip6-loopback"
+              backup=yes
+              state=present
+
+- name: Reload facts
+  setup:
+  when: hostname_change.changed

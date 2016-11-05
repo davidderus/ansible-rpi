@@ -21,6 +21,7 @@ with_wifi: False
 with_vim: False
 with_mosh: False
 with_automount: False
+with_custom_hostname: False
 
 automount_local_devices: []
 automount_network_folders: []

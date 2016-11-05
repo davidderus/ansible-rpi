@@ -19,20 +19,6 @@
   become: false
   when: upgrade_distribution|changed
 
-- name: Updating hostname
-  hostname: name={{ rpi_host_name }}
-  register: hostname_change
-
-- name: Update /etc/hosts (1/2)
-  lineinfile: dest=/etc/hosts regexp='^127\.0\.1\.1' line='127.0.0.1	localhost	{{ rpi_host_name }}' owner=root group=root mode=0644 backup=yes
-
-- name: Update /etc/hosts (2/2)
-  lineinfile: dest=/etc/hosts regexp='^::1' line='::1		localhost ip6-localhost ip6-loopback	{{ rpi_host_name }}' owner=root group=root mode=0644
-
-- name: Reload facts
-  setup:
-  when: hostname_change.changed
-
 - name: Setup locale
   lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
   with_items: "{{ rpi_locale }}"

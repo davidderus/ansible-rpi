@@ -18,6 +18,8 @@
   when: with_mosh
 - include: automount.yml
   when: with_automount
+- include: hostname.yml
+  when: with_custom_hostname
 
 # Other
 
