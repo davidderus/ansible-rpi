@@ -10,6 +10,7 @@ Make Raspberry Pi up and running in a few command
 
 - `common`: Setup the Rpi with with updates and better security
   - Locale setup
+  - System upgrade (*including kernel*)
   - Adding some useful packages (*curl, vim, tmux, git…*)
   - UFW firewall rules allowing user-specified ports
   - Logwatch for system status emails (*via Postfix*)
