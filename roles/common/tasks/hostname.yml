@@ -18,6 +18,12 @@
               backup=yes
               state=present
 
+- name: Install Zeroconf utilities
+  apt: name={{ item }} state=latest
+  with_items:
+    - avahi-daemon
+    - libnss-mdns
+
 - name: Reload facts
   setup:
   when: hostname_change.changed

@@ -11,7 +11,6 @@ required_packages:
   - curl
   - git
   - tmux
-  - avahi-daemon # Using defaults
   - zsh # With oh-my-zsh
   - tree
 

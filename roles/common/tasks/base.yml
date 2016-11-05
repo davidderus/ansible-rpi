@@ -29,7 +29,7 @@
   when: update_locale|changed
 
 - name: Install required packages
-  apt: state=installed pkg={{ item }}
+  apt: name={{ item }} state=latest
   with_items: "{{ required_packages }}"
 
 - name: Add new group for shared items (downloads and other roles)
