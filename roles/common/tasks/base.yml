@@ -40,3 +40,6 @@
 
 - name: Add user to sudoers
   lineinfile: dest=/etc/sudoers regexp="{{ rpi_user_name }} ALL" line="{{ rpi_user_name }} ALL=(ALL) ALL" state=present
+
+- name: Remove pi user from sudoers
+  lineinfile: dest=/etc/sudoers regexp="^pi ALL" state=absent backup=yes
