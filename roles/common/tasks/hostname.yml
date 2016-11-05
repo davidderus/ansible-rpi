@@ -6,9 +6,9 @@
 
 # A second definitive update is needed on certain Rpis
 - name: Updating hostname (2/2)
-  copy: content: "{{inventory_hostname_short}}{{'\n'}}"
-        dest: /etc/hostname
-        backup: yes
+  copy: content="{{inventory_hostname_short}}{{'\n'}}"
+        dest=/etc/hostname
+        backup=yes
   register: hostname_change
 
 - name: Update /etc/hosts (IPv4)

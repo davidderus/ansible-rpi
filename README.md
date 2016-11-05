@@ -65,7 +65,7 @@ ansible-playbook playbook.yml -u pi --ask-pass
 First run:
 
 ```
-ansible-playbook playbook.yml -u vagrant --private-key .vagrant/machines/default/virtualbox/private_key
+ansible-playbook playbook.yml -i hosts.dev
 ```
 
 Next runs:
