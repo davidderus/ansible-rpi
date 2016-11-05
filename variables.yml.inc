@@ -12,6 +12,10 @@ rpi_user_password: $CHANGE_ME$Ovaexae2queimeerahraashahchah5aiyeexae1ahi3aiwiek3
 rpi_locale:
   - "fr_FR.UTF-8 UTF-8"
 
+# Enable custom hostname for Rpi and install zeroconf and libnss-mdns
+# with_custom_hostname: True
+# rpi_host_name: "rpi-{{ rpi_user_name }}"
+
 # rpi_zsh_theme: robbyrussell
 
 # Logwatch

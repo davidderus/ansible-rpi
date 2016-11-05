@@ -10,14 +10,15 @@ Make Raspberry Pi up and running in a few command
 
 - `common`: Setup the Rpi with with updates and better security
   - Locale setup
-  - Hostname update
-  - Adding some useful packages (*curl, vim, tmux, git, avahi-daemon…*)
+  - System upgrade (*including kernel*)
+  - Adding some useful packages (*curl, vim, tmux, git…*)
   - UFW firewall rules allowing user-specified ports
   - Logwatch for system status emails (*via Postfix*)
   - SSH with key-only authentification
-  - Zeroconf with Avahi Daemon
+  - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
   - `oh-my-zsh` install and vim as default editor
   - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
+  - Optionnal hostname update and Zeroconf
   - Optionnal custom SSH banner
   - Optionnal Wifi config
   - Optionnal Mosh support
@@ -65,7 +66,7 @@ ansible-playbook playbook.yml -u pi --ask-pass
 First run:
 
 ```
-ansible-playbook playbook.yml -u vagrant --private-key .vagrant/machines/default/virtualbox/private_key
+ansible-playbook playbook.yml -i hosts.dev
 ```
 
 Next runs:
