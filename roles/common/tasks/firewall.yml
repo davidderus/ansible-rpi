@@ -5,8 +5,5 @@
   with_items:
     - "{{ allowed_ports }}"
 
-- name: Avahi Zeroconf Daemon ports
-  ufw: rule=allow port=5353 proto=udp
-
 - name: Enable firewall
   ufw: state=enabled policy=deny

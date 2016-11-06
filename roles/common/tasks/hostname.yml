@@ -24,6 +24,10 @@
     - libnss-mdns
     - avahi-daemon
 
+- name: Avahi Zeroconf Daemon ports
+  ufw: rule=allow port=5353 proto=udp
+  notify: Reload firewall
+
 - name: Reload facts
   setup:
   when: hostname_change|changed
