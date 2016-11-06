@@ -26,7 +26,7 @@ logwatch_email: youremail@example.com
 
 # SSH
 
-ssh_port: 4480
+ssh_port: 22
 ssh_public_keys:
   - ~/.ssh/id_rsa.pub
 
@@ -36,7 +36,7 @@ ssh_custom_banner: True
 # Firewall
 
 allowed_ports:
-  - 4480 # SSH custom port
+  - 22
   - 6800 # Aria2 Daemon port
 
 # Wifi handling (disabled by default)
