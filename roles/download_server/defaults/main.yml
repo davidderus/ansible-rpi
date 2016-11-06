@@ -5,5 +5,4 @@ ds_downloads_root: "/home/{{ ds_user_name }}"
 ds_downloads_directory: "{{ ds_downloads_root }}/aria-downloads"
 
 aria2_rpc_enabled: False
-aria2_rpc_token: "{{ rpi_user_password }}"
 aria2_rpc_port: 6800
