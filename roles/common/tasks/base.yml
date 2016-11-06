@@ -37,10 +37,14 @@
 
 - name: Create new Rpi owner
   user: name={{ rpi_user_name }}
-        groups={{ rpi_shared_group }},sudo,pi
+        groups={{ rpi_shared_group }},pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi
         password={{ rpi_user_password | password_hash('sha512') }}
         shell={{ '/bin/zsh' if with_zsh else '/bin/bash' }}
         append=yes
+        state=present
 
-- name: Remove pi user
-  user: name=pi state=absent remove=yes
+- name: Remove pi user from sudoers
+  lineinfile: dest=/etc/sudoers regexp="^pi ALL" state=absent backup=yes
+
+- name: Limit pi's groups
+  user: name=pi state=present groups=pi
