@@ -6,5 +6,5 @@
            value='{{ item.value }}'
            vtype='{{ item.vtype }}'
   with_items:
-    - { question: 'postfix/mailname', value: '{{ rpi_host_name }}', vtype: 'string' }
+    - { question: 'postfix/mailname', value: '{{ rpi_host_name if with_custom_hostname else ansible_fqdn }}', vtype: 'string' }
     - { question: 'postfix/main_mailer_type', value: 'Internet Site', vtype: 'string' }

@@ -5,6 +5,10 @@
 - include: base.yml
 - include: ssh.yml
 - include: firewall.yml
+
+- include: hostname.yml
+  when: with_custom_hostname
+
 - include: postfix.yml
 - include: logwatch.yml
 
@@ -18,7 +22,5 @@
   when: with_mosh
 - include: automount.yml
   when: with_automount
-- include: hostname.yml
-  when: with_custom_hostname
 - include: zsh.yml
   when: with_zsh
