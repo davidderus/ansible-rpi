@@ -36,10 +36,11 @@
   group: state=present name={{ rpi_shared_group }}
 
 - name: Create new Rpi owner
-  user: name={{ rpi_user_name }} groups={{ rpi_shared_group }} password={{ rpi_user_password | password_hash('sha512') }} shell=/bin/zsh append=yes
+  user: name={{ rpi_user_name }}
+        groups={{ rpi_shared_group }},sudo,pi
+        password={{ rpi_user_password | password_hash('sha512') }}
+        shell={{ '/bin/zsh' if with_zsh else '/bin/bash' }}
+        append=yes
 
-- name: Add user to sudoers
-  lineinfile: dest=/etc/sudoers regexp="{{ rpi_user_name }} ALL" line="{{ rpi_user_name }} ALL=(ALL) ALL" state=present
-
-- name: Remove pi user from sudoers
-  lineinfile: dest=/etc/sudoers regexp="^pi ALL" state=absent backup=yes
+- name: Remove pi user
+  user: name=pi state=absent remove=yes

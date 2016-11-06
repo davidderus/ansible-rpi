@@ -11,13 +11,13 @@ required_packages:
   - curl
   - git
   - tmux
-  - zsh # With oh-my-zsh
   - tree
 
 ssh_custom_banner: False
 
 with_wifi: False
 with_vim: False
+with_zsh: False
 with_mosh: False
 with_automount: False
 with_custom_hostname: False
