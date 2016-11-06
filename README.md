@@ -80,3 +80,20 @@ ansible all -m ping -u neo
 # Execute updated playbook
 ansible-playbook playbook.yml -u neo --ask-become-pass
 ```
+
+## User password generation
+
+`password_hash` is a useful Jinja filter but uses 656000 rounds for SHA512 hashing.
+
+The default is 5000 in glibc [1], and it adds an important computing cost on a Rpi.
+
+This may cause axtra slowness on user authentification (*ie. sudo password prompt*)
+
+Please use the following command to generate a user password hash [2]:
+
+```bash
+python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass(), rounds=5000)"
+```
+
+[1](https://github.com/ansible/ansible/issues/15326)
+[2](https://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module)
