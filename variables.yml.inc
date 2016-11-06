@@ -6,7 +6,9 @@
 
 # New Rpi identity
 rpi_user_name: neo
-rpi_user_password: $CHANGE_ME$Ovaexae2queimeerahraashahchah5aiyeexae1ahi3aiwiek3ohFaib3gahpooWoodah8que8chiephureghang7Eiz4baig0BooshahCacha3oyeiYeu6Wo1sheiph
+
+# Must be a SHA-512 hash with like 5000 rounds (not as much as Ansible password_hash – 656000 — otherwise authentification may take a while)
+rpi_user_password_hash: $6$KU0KJ6OtZYzWlhbj$HWRhIMQL37UfEBkR1nwKre08LbM9LvAZr/lZ7iHz9VW7AfSu88RaADbtoxfJEwiW3DaWIzKUnu8mweeTg9Qxw.
 
 # Updating locales
 rpi_locale:
@@ -66,7 +68,7 @@ with_vim: True
 
 # Creates a dedicated user
 
-# By default rpi_user_password is the prc token
+# Must be set in order to access aria2
 # aria2_rpc_token:
 
 # aria2_rpc_port: 6800
