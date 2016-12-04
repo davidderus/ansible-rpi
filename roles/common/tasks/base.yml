@@ -12,6 +12,7 @@
   lineinfile: line='hdmi_safe=1'
     dest=/boot/config.txt
     regexp="^hdmi_safe="
+    state=present
   register: update_config
 
 - name: Rebooting Rpi
