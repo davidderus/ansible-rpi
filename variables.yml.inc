@@ -73,6 +73,9 @@ with_vim: True
 
 # aria2_rpc_port: 6800
 
+# To enable traffic encryption (disabled by default)
+# aria2_rpc_encrypted: True
+
 # ds_downloads_root (by default: /home/{{ ds_user_name }}). Will create a `downloads` directory to put downloaded files in.
 # ds_downloads_root: /media/mydrive
 

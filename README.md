@@ -24,12 +24,12 @@ Make Raspberry Pi up and running in a few command
   - Optionnal Mosh support
 - `download_server`: Turn the Rpi in a download server for ddl and torrents
   - Aria2 daemon
-  - RPC interface for remote monitoring
+  - RPC interface for remote monitoring with optionnal SSL encryption
   - Shared downloads directory (*may be replaced by a previously configured network folder*)
 - `media_center`: Turn your Raspberry into a decent customizable media center
   - Kodi basic installation
   - Dynamic sources creation (*may be linked to previously configured network folders*)
-  - Buffering handling
+  - Buffer handling
 
 ### Incoming
 
@@ -37,7 +37,6 @@ Make Raspberry Pi up and running in a few command
 
 ### TODO
 
-- Safe credential storage
 - Use as an ansible module
 
 ## Setup
