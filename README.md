@@ -29,6 +29,7 @@ Make Raspberry Pi up and running in a few command
 - `media_center`: Turn your Raspberry into a decent customizable media center
   - Kodi basic installation
   - Dynamic sources creation (*may be linked to previously configured network folders*)
+  - Buffering handling
 
 ### Incoming
 

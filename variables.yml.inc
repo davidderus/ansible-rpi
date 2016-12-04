@@ -80,10 +80,18 @@ with_vim: True
 # Media Center Role #
 #####################
 
-# Does not create a dedicated user (user rpi one)
+# Does not create a dedicated user (eg. user neo)
 
 # kodi_source_files: []
 # kodi_source_music: []
 # kodi_source_pictures: []
 # kodi_source_programs: []
 # kodi_source_videos: []
+
+# Enable buffering for slow networks
+
+with_kodi_buffering: True
+
+# Default values for a Rpi 3 (1 Gb of RAM):
+# kodi_read_buffer_factor: 20
+# kodi_buffer_size: 139460608
