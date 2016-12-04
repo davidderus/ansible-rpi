@@ -18,3 +18,7 @@
 
 - name: Build sources file
   template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600
+
+- name: Enable buffering
+  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ rpi_user_name }} mode=0600
+  when: with_kodi_buffering
