@@ -9,7 +9,7 @@
 - include: hostname.yml
   when: with_custom_hostname
 
-- include: postfix.yml
+- include: ssmtp.yml
 - include: logwatch.yml
 
 # Optionnals
