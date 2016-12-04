@@ -21,7 +21,11 @@
   notify: Restart aria2
 
 - name: Updates private key permissions
-  file: path={{ aria2_private_key_path }} owner={{ ds_user_name }} group={{ ds_user_name }} mode=0700
+  file: path={{ aria2_private_key_path }} owner={{ ds_user_name }} group={{ rpi_shared_group }} mode=0700
+  when: aria2_rpc_encrypted
+
+- name: Updates certificate permissions
+  file: path={{ aria2_cert_path }} owner={{ ds_user_name }} group={{ rpi_shared_group }}
   when: aria2_rpc_encrypted
 
 - name: Install aria2 service
