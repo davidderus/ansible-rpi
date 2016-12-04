@@ -16,7 +16,7 @@
   template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} mode=0600
 
 - name: Generate a certificate and private key for RPC communications
-  command: openssl req -out {{ aria2_cert_path }} -new -newkey rsa:4096 -nodes -keyout {{ aria2_private_key_path }} -subj "/"
+  command: openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout {{ aria2_private_key_path }} -out {{ aria2_cert_path }} -subj "/"
   when: aria2_rpc_encrypted
   notify: Restart aria2
 
