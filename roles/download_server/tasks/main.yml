@@ -15,6 +15,15 @@
 - name: Copy aria2 configuration
   template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} mode=0600
 
+- name: Generate a certificate and private key for RPC communications
+  command: openssl req -out {{ aria2_cert_path }} -new -newkey rsa:2048 -nodes -keyout {{ aria2_private_key_path }}
+  when: aria2_rpc_encrypted
+  notify: Restart aria2
+
+- name: Updates private key permissions
+  file: path={{ aria2_private_key_path }} owner={{ ds_user_name }} group={{ ds_user_name }} mode=0700
+  when: aria2_rpc_encrypted
+
 - name: Install aria2 service
   template: src=aria2/aria2.service dest=/etc/systemd/system/aria2.service owner=root group=root mode=0644
   notify: Restart aria2

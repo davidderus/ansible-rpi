@@ -20,3 +20,9 @@ rpc-allow-origin-all=true
 rpc-listen-all=true
 rpc-listen-port={{ aria2_rpc_port }}
 rpc-secret={{ aria2_rpc_token }}
+
+{% if aria2_rpc_encrypted %}
+rpc-secure=true
+rpc-certificate={{ aria2_cert_path }}
+rpc-private-key={{ aria2_private_key_path }}
+{% endif %}
