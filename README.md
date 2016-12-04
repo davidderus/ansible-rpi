@@ -13,7 +13,7 @@ Make Raspberry Pi up and running in a few command
   - System upgrade (*including kernel*)
   - Adding some useful packages (*curl, vim, tmux, git…*)
   - UFW firewall rules allowing user-specified ports
-  - Logwatch for system status emails (*via Postfix*)
+  - Logwatch for system status emails (*via SSMTP*)
   - SSH with key-only authentification
   - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
   - `oh-my-zsh` install and vim as default editor

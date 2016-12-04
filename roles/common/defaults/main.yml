@@ -24,3 +24,6 @@ with_custom_hostname: False
 
 automount_local_devices: []
 automount_network_folders: []
+
+ssmtp_mailhub: smtp.gmail.com:587
+ssmtp_auth_user: "{{ ssmtp_email }}"

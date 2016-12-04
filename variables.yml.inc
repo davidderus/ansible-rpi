@@ -20,6 +20,17 @@ rpi_locale:
 
 # rpi_zsh_theme: robbyrussell
 
+# SSMTP
+
+ssmtp_email: admin@gmail.com
+
+# https://security.google.com/settings/security/apppasswords
+ssmtp_auth_pass: MyUniqMailKey
+
+# Other vars:
+# ssmtp_mailhub: smtp.gmail.com:587
+# ssmtp_auth_user: admin@gmail.com
+
 # Logwatch
 
 logwatch_email: youremail@example.com

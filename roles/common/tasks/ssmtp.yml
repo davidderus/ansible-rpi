@@ -1,0 +1,10 @@
+---
+
+- name: Install SSMTP
+  apt: name=ssmtp state=installed update_cache=yes
+
+- name: Set up ssmtp.conf
+  template: src=ssmtp/ssmtp.conf.j2 dest=/etc/ssmtp/ssmtp.conf
+
+- name: Set up revaliases
+  template: src=ssmtp/revaliases.j2 dest=/etc/ssmtp/revaliases
