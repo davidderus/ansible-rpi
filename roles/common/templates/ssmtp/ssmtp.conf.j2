@@ -1,0 +1,11 @@
+# Basic Config
+root={{ ssmtp_email }}
+AuthMethod=LOGIN
+UseSTARTTLS=YES
+hostname={{ rpi_host_name }}
+FromLineOverride=YES
+
+# Gmail Auth
+AuthUser={{ ssmtp_auth_user }}
+mailhub={{ ssmtp_mailhub }}
+AuthPass={{ ssmtp_auth_pass }}

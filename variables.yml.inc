@@ -20,6 +20,17 @@ rpi_locale:
 
 # rpi_zsh_theme: robbyrussell
 
+# SSMTP
+
+ssmtp_email: admin@gmail.com
+
+# https://security.google.com/settings/security/apppasswords
+ssmtp_auth_pass: MyUniqMailKey
+
+# Other vars:
+# ssmtp_mailhub: smtp.gmail.com:587
+# ssmtp_auth_user: admin@gmail.com
+
 # Logwatch
 
 logwatch_email: youremail@example.com
@@ -73,6 +84,10 @@ with_vim: True
 
 # aria2_rpc_port: 6800
 
+# To enable traffic encryption (disabled by default)
+# aria2_rpc_encrypted: True
+# aria2_cert_subject: "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
+
 # ds_downloads_root (by default: /home/{{ ds_user_name }}). Will create a `downloads` directory to put downloaded files in.
 # ds_downloads_root: /media/mydrive
 
@@ -80,10 +95,18 @@ with_vim: True
 # Media Center Role #
 #####################
 
-# Does not create a dedicated user (user rpi one)
+# Does not create a dedicated user (eg. user neo)
 
 # kodi_source_files: []
 # kodi_source_music: []
 # kodi_source_pictures: []
 # kodi_source_programs: []
 # kodi_source_videos: []
+
+# Enable buffering for slow networks
+
+with_kodi_buffering: True
+
+# Default values for a Rpi 3 (1 Gb of RAM):
+# kodi_read_buffer_factor: 20
+# kodi_buffer_size: 139460608

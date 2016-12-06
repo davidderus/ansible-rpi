@@ -6,3 +6,7 @@ ds_downloads_directory: "{{ ds_downloads_root }}/aria-downloads"
 
 aria2_rpc_enabled: False
 aria2_rpc_port: 6800
+
+aria2_rpc_encrypted: False
+aria2_cert_path: /home/{{ ds_user_name }}/.aria2/certificate.crt
+aria2_private_key_path: /home/{{ ds_user_name }}/.aria2/private_key.key
