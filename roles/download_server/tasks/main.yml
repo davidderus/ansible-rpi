@@ -38,9 +38,9 @@
     src: "{{ aria2_cert_path }}"
     dest: tmp/aria2-{{ inventory_hostname }}.crt
     flat: true
-    when:
-      - aria2_rpc_encrypted
-      - config_updated|changed
+  when:
+    - aria2_rpc_encrypted
+    - config_updated|changed
 
 - debug: msg="The certificate was copied in tmp/aria2-{{ inventory_hostname }}.crt"
   notify: Restart aria2
