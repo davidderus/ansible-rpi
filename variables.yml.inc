@@ -86,6 +86,7 @@ with_vim: True
 
 # To enable traffic encryption (disabled by default)
 # aria2_rpc_encrypted: True
+# aria2_cert_subject: "/C=GB/ST=London/L=London/O=Global Security/OU=IT Department/CN=example.com"
 
 # ds_downloads_root (by default: /home/{{ ds_user_name }}). Will create a `downloads` directory to put downloaded files in.
 # ds_downloads_root: /media/mydrive

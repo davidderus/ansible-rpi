@@ -17,7 +17,7 @@
   register: config_updated
 
 - name: Generate a certificate and private key for RPC communications
-  command: openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout {{ aria2_private_key_path }} -out {{ aria2_cert_path }} -subj "/"
+  command: openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout {{ aria2_private_key_path }} -out {{ aria2_cert_path }} -subj {{ aria2_cert_subject }}
   when:
     - aria2_rpc_encrypted
     - config_updated|changed
