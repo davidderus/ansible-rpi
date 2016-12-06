@@ -10,23 +10,43 @@
   file: path={{ ds_downloads_directory }} state=directory mode=0770
 
 - name: Make configuration directory
-  file: path=/home/{{ ds_user_name }}/.aria2 state=directory owner={{ ds_user_name }}
+  file: path=/home/{{ ds_user_name }}/.aria2 state=directory owner={{ ds_user_name }} group={{ ds_user_name }}
 
 - name: Copy aria2 configuration
-  template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} mode=0600
+  template: src=aria2/aria2.conf.j2 dest=/home/{{ ds_user_name }}/.aria2/aria2.conf owner={{ ds_user_name }} group={{ ds_user_name }} mode=0600
+  register: config_updated
 
 - name: Generate a certificate and private key for RPC communications
   command: openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout {{ aria2_private_key_path }} -out {{ aria2_cert_path }} -subj "/"
-  when: aria2_rpc_encrypted
-  notify: Restart aria2
+  when:
+    - aria2_rpc_encrypted
+    - config_updated|changed
 
 - name: Updates private key permissions
-  file: path={{ aria2_private_key_path }} owner={{ ds_user_name }} group={{ rpi_shared_group }} mode=0700
-  when: aria2_rpc_encrypted
+  file: path={{ aria2_private_key_path }} owner={{ ds_user_name }} group={{ ds_user_name }} mode=0700
+  when:
+    - aria2_rpc_encrypted
+    - config_updated|changed
 
 - name: Updates certificate permissions
-  file: path={{ aria2_cert_path }} owner={{ ds_user_name }} group={{ rpi_shared_group }}
-  when: aria2_rpc_encrypted
+  file: path={{ aria2_cert_path }} owner={{ ds_user_name }} group={{ ds_user_name }}
+  when:
+    - aria2_rpc_encrypted
+    - config_updated|changed
+
+- fetch:
+    src: "{{ aria2_cert_path }}"
+    dest: tmp/aria2-{{ inventory_hostname }}.crt
+    flat: true
+    when:
+      - aria2_rpc_encrypted
+      - config_updated|changed
+
+- debug: msg="The certificate was copied in tmp/aria2-{{ inventory_hostname }}.crt"
+  notify: Restart aria2
+  when:
+    - aria2_rpc_encrypted
+    - config_updated|changed
 
 - name: Install aria2 service
   template: src=aria2/aria2.service dest=/etc/systemd/system/aria2.service owner=root group=root mode=0644
@@ -34,3 +54,7 @@
 
 - name: Enable aria2 daemon on boot
   service: name=aria2 enabled=true state=started
+
+- service:
+    name: aria2
+    state: restarted
