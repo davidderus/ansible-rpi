@@ -30,6 +30,7 @@ Make Raspberry Pi up and running in a few command
   - Kodi basic installation
   - Dynamic sources creation (*may be linked to previously configured network folders*)
   - Buffer handling
+  - Optionnal minimal OpenBox setup (*when using a lite image for eg.*)
 
 ### Incoming
 
