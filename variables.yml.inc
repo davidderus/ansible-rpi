@@ -104,9 +104,12 @@ with_vim: True
 # kodi_source_videos: []
 
 # Enable buffering for slow networks
-
-with_kodi_buffering: True
+# with_kodi_buffering: True
 
 # Default values for a Rpi 3 (1 Gb of RAM):
 # kodi_read_buffer_factor: 20
 # kodi_buffer_size: 139460608
+
+# with_kodi_desktop installs a minimal OpenBox desktop based on
+# https://www.prahladyeri.com/blog/2016/02/minimal-debian-desktop-setup.html
+# with_kodi_desktop: True

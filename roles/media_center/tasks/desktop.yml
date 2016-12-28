@@ -1,0 +1,27 @@
+---
+
+# https://www.prahladyeri.com/blog/2016/02/minimal-debian-desktop-setup.html
+- name: Install packages for a minimal desktop
+  apt: name={{ item }} state=latest
+  with_items:
+    - network-manager
+    - xorg
+    - openbox
+    - xdm
+    - xbacklight
+    - pcmanfm
+    - lxappearance
+    - lxpanel
+    - gmrun
+    - gnome-terminal
+
+- name: Create openbox config directory
+  file: path=~/.config/openbox/autostart owner="{{ rpi_user_name }}" state=directory
+
+- name: Enforce lxpanel opening
+  lineinfile: dest=~/.config/openbox/autostart
+              regexp="^lxpanel"
+              line="lxpanel &"
+              state=present
+  become: yes
+  become_user: "{{ rpi_user_name }}"
