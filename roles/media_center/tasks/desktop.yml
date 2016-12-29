@@ -16,12 +16,13 @@
     - gnome-terminal
 
 - name: Create openbox config directory
-  file: path=~/.config/openbox/autostart owner="{{ rpi_user_name }}" state=directory
+  file: path="/home/{{ rpi_user_name }}/.config/openbox" owner="{{ rpi_user_name }}" group="{{ rpi_user_name }}" state=directory
 
 - name: Enforce lxpanel opening
-  lineinfile: dest=~/.config/openbox/autostart
+  lineinfile: dest="/home/{{ rpi_user_name }}/.config/openbox/autostart"
               regexp="^lxpanel"
               line="lxpanel &"
+              create=yes
               state=present
   become: yes
   become_user: "{{ rpi_user_name }}"
