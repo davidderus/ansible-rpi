@@ -2,8 +2,14 @@
 
 # See https://www.raspberrypi.org/documentation/configuration/config-txt.md
 - name: Setup custom config.txt
-  template: src=config.txt.j2 dest="/boot/config.txt" owner=root group=root mode=0755
+  template: src=system/config.txt.j2 dest=/boot/config.txt owner=root group=root mode=0755
   register: update_config
+
+- name: Create 99-input.rules
+  template: src=system/input-rules dest=/etc/udev/rules.d/99-input.rules owner=root group=root mode=0644
+
+- name: Create 10-permissions.rules
+  template: src=system/permissions-rules dest=/etc/udev/rules.d/10-permissions.rules owner=root group=root mode=0644
 
 - name: Rebooting Rpi
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
