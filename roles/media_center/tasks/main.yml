@@ -1,24 +1,54 @@
 ---
 
-- name: Add Kodi Repo if not present
+# See https://www.raspberrypi.org/documentation/configuration/config-txt.md
+- name: Setup custom config.txt
+  template: src=system/config.txt.j2 dest=/boot/config.txt owner=root group=root mode=0755
+  register: update_config
+
+- name: Create 99-input.rules
+  template: src=system/input-rules dest=/etc/udev/rules.d/99-input.rules owner=root group=root mode=0644
+
+- name: Create 10-permissions.rules
+  template: src=system/permissions-rules dest=/etc/udev/rules.d/10-permissions.rules owner=root group=root mode=0644
+
+- name: Rebooting Rpi
+  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
+  async: 1
+  poll: 0
+  ignore_errors: true
+  when: update_config|changed
+
+- name: Waiting for server to come back
+  local_action: wait_for host={{ inventory_hostname }} state=started delay=30 timeout=300
+  become: false
+  when: update_config|changed
+
+- name: Add Kodi 16 Custom Repo
   apt_repository: repo={{ kodi_apt_repo }}
-  when: ansible_os_family == 'Debian' and ansible_distribution_version|int == 8
+
+- name: Add Kodi Repo Key
+  apt_key:
+    url: "http://pipplware.pplware.pt/pipplware/key.asc"
+    state: present
 
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
 - name: Install Kodi
-  apt: state=installed pkg=kodi
+  apt: state=installed pkg=kodi force=yes
 
 - name: Create current user configuration directories
-  file: path={{ item }} state=directory owner={{ rpi_user_name }} mode=0755
+  file: path={{ item }} state=directory owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0755
   with_items:
     - "{{ kodi_user_dir }}"
     - "{{ kodi_user_dir }}/userdata"
 
 - name: Build sources file
-  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} mode=0600
+  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
 
 - name: Enable buffering
-  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ rpi_user_name }} mode=0600
+  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
   when: with_kodi_buffering
+
+- include: desktop.yml
+  when: with_kodi_desktop

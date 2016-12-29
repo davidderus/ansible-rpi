@@ -15,3 +15,11 @@
     - download_server
 
   become: yes
+
+- name: Setup a media center
+
+  hosts: media_centers
+  roles:
+    - media_center
+
+  become: yes
