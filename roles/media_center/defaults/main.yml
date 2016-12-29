@@ -1,5 +1,6 @@
-kodi_apt_repo: "deb http://http.debian.net/debian jessie-backports main"
+kodi_apt_repo: "deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /"
 kodi_user_dir: /home/{{ rpi_user_name }}/.kodi
+openbox_config_dir: /home/{{ rpi_user_name }}/.config/openbox
 
 # Arrays of filepaths
 # Inspired by https://github.com/cmprescott/ansible-role-kodi

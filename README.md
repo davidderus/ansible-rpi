@@ -30,7 +30,7 @@ Make Raspberry Pi up and running in a few command
   - Kodi basic installation
   - Dynamic sources creation (*may be linked to previously configured network folders*)
   - Buffer handling
-  - Optionnal minimal OpenBox setup (*when using a lite image for eg.*)
+  - Optionnal minimal Openbox setup (*when using a lite image for eg.*)
 
 ### Incoming
 
@@ -55,6 +55,12 @@ cp variables.yml.inc host_vars/my-host.yml
 ### Usage
 
 First update the `hosts` file to target your Rpis.
+
+I recommend using an up-to-date Raspbian Lite image.
+
+Make sure that the Rpi is SSHable (**latest raspbian lite images come with SSH
+disabled by default, creating a file with name "ssh" in boot partition is
+required to enable it.**).
 
 Then the first time run:
 

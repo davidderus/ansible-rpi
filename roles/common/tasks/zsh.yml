@@ -17,3 +17,8 @@
   lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ rpi_zsh_theme|default('junkfood') }}\"" state=present
   become: yes
   become_user: "{{ rpi_user_name }}"
+
+- name: Update user default shell
+  user: name={{ rpi_user_name }}
+        shell=/bin/zsh
+        state=present

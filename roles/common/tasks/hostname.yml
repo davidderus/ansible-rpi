@@ -26,7 +26,7 @@
 
 - name: Avahi Zeroconf Daemon ports
   ufw: rule=allow port=5353 proto=udp
-  notify: Enable firewall
+  notify: Reload firewall
 
 - name: Reload facts
   setup:
