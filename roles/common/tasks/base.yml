@@ -47,7 +47,7 @@
   user: name={{ rpi_user_name }}
         groups={{ rpi_shared_group }},pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi,tty
         password={{ rpi_user_password_hash }}
-        shell={{ '/bin/zsh' if with_zsh else '/bin/bash' }}
+        shell=/bin/bash
         append=yes
         state=present
 
