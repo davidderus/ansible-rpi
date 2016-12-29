@@ -37,6 +37,8 @@ logwatch_email: youremail@example.com
 
 # SSH
 
+# Changing this implies updating `allowed_ports` by adding the new port
+# AND leaving port 22 for the first setup (otherwise ansible may stop)
 ssh_port: 22
 ssh_public_keys:
   - ~/.ssh/id_rsa.pub
@@ -49,6 +51,7 @@ ssh_custom_banner: True
 allowed_ports:
   - 22
   - 6800 # Aria2 Daemon port
+# - 8070 # Kodi Remote Connection
 
 # Wifi handling (disabled by default)
 
