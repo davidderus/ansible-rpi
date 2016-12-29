@@ -1,8 +1,12 @@
 ---
 
-- name: Add Kodi Repo if not present
+- name: Add Kodi 16 Custom Repo
   apt_repository: repo={{ kodi_apt_repo }}
-  when: ansible_os_family == 'Debian' and ansible_distribution_version|int == 8
+
+- name: Add Kodi Repo Key
+  apt_key:
+    url: "http://pipplware.pplware.pt/pipplware/key.asc"
+    state: present
 
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
