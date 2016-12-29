@@ -35,7 +35,7 @@
   apt: update_cache=yes cache_valid_time=3600
 
 - name: Install Kodi
-  apt: state=installed pkg=kodi
+  apt: state=installed pkg=kodi force=yes
 
 - name: Create current user configuration directories
   file: path={{ item }} state=directory owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0755
