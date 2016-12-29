@@ -16,10 +16,18 @@
     - gnome-terminal
 
 - name: Create openbox config directory
-  file: path="/home/{{ rpi_user_name }}/.config/openbox" owner="{{ rpi_user_name }}" group="{{ rpi_user_name }}" state=directory
+  file: path="{{ openbox_config_dir }}" owner="{{ rpi_user_name }}" group="{{ rpi_user_name }}" state=directory
+  register: create_openbox_config
+
+- name: Setting up default Openbox config
+  synchronize:
+    mode: pull
+    src: /etc/xdg/openbox
+    dest: "{{ openbox_config_dir }}"
+  when: create_openbox_config|changed
 
 - name: Enforce lxpanel opening
-  lineinfile: dest="/home/{{ rpi_user_name }}/.config/openbox/autostart"
+  lineinfile: dest="{{ openbox_config_dir }}/autostart"
               regexp="^lxpanel"
               line="lxpanel &"
               create=yes
