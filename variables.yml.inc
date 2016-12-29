@@ -109,7 +109,7 @@ with_vim: True
 # Enable buffering for slow networks
 # with_kodi_buffering: True
 
-# Default values for a Rpi 3 (1 Gb of RAM):
+# Using 418M of RAM maximum (may crash if not available):
 # kodi_read_buffer_factor: 20
 # kodi_buffer_size: 139460608
 
