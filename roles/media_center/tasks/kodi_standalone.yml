@@ -13,14 +13,16 @@
     append: yes
 
 - name: Install Kodi service
-  template: src=kodi/kodi.service dest=/etc/systemd/system/kodi.service owner=root group=root mode=0644
+  template:
+    src: kodi/kodi.service
+    dest: /etc/systemd/system/kodi.service
+    owner: root
+    group: root
+    mode: 0644
   notify: Restart kodi
 
 - name: Enable Kodi service
-  service: name=kodi enabled=true state=started
-  args: "--user {{ kodi_standalone_username }}"
-
-# http://paiiou.free.fr/Fonct/auto.php
-- name: Adds autologin to xdm
-  template: src=kodi/autologin dest=/etc/sysconfig/autologin owner=root group=root mode=0644
-  when: with_kodi_desktop and with_kodi_autologin
+  systemd:
+    name: kodi
+    enabled: True
+    daemon_reload: True
