@@ -121,3 +121,6 @@ with_vim: True
 # Adds a passwordless session for kodi standalone DE
 # with_kodi_standalone: True
 # kodi_standalone_username: kodi
+
+# Autolog the kodi user with XDM. Implies `with_kodi_desktop: True`
+# with_kodi_autologin: True

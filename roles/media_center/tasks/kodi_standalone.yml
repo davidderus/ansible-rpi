@@ -3,7 +3,7 @@
 # Inspired by http://kodi.wiki/view/HOW-TO:Autostart_Kodi_for_Linux
 
 # Adds a dedicated user with no password
-- name: Add new user for download server
+- name: Add new user for media center
   user:
     name: "{{ kodi_standalone_username }}"
     comment: "Kodi standalone session"
@@ -18,3 +18,8 @@
 - name: Enable Kodi service
   service: name=kodi enabled=true state=started
   args: "--user {{ kodi_standalone_username }}"
+
+# http://paiiou.free.fr/Fonct/auto.php
+- name: Adds autologin to xdm
+  template: src=kodi/autologin dest=/etc/sysconfig/autologin owner=root group=root mode=0644
+  when: with_kodi_desktop and with_kodi_autologin
