@@ -122,6 +122,3 @@ with_vim: True
 # with_kodi_standalone: True
 # kodi_standalone_username: kodi
 # kodi_standalone_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.
-
-# Autolog the kodi user with XDM. Implies `with_kodi_desktop: True`
-# with_kodi_autologin: True

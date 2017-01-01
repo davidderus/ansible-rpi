@@ -17,5 +17,4 @@ kodi_buffer_size: 139460608
 with_kodi_desktop: False
 
 with_kodi_standalone: False
-with_kodi_autologin: False
 kodi_standalone_username: kodi
