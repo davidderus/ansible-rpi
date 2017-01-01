@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Make Raspberry Pi up and running in a few command
+Make Raspberry Pi up and running in a few command.
+
+Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ## Roles
 
@@ -34,11 +36,9 @@ Make Raspberry Pi up and running in a few command
 
 ### Incoming
 
+- Separate user for kodi
+- Kodi session with `kodi-standalone` support on startup (_reloadable service_)
 - `swarm_node`: Run Docker containers in a Rpis Swarm
-
-### TODO
-
-- Use as an ansible module
 
 ## Setup
 
@@ -56,7 +56,7 @@ cp variables.yml.inc host_vars/my-host.yml
 
 First update the `hosts` file to target your Rpis.
 
-I recommend using an up-to-date Raspbian Lite image.
+I recommend using an up-to-date [Raspbian Lite image](https://downloads.raspberrypi.org/raspbian_lite_latest).
 
 Make sure that the Rpi is SSHable (**latest raspbian lite images come with SSH
 disabled by default, creating a file with name "ssh" in boot partition is

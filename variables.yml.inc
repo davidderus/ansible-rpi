@@ -51,7 +51,8 @@ ssh_custom_banner: True
 allowed_ports:
   - 22
   - 6800 # Aria2 Daemon port
-# - 8070 # Kodi Remote Connection
+# - 8070 # Kodi HTTPServer Connection
+# - 9777 # Kodi EventServer Connection
 
 # Wifi handling (disabled by default)
 
