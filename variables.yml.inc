@@ -114,11 +114,6 @@ with_vim: True
 # kodi_read_buffer_factor: 20
 # kodi_buffer_size: 139460608
 
-# with_kodi_desktop installs a minimal OpenBox desktop based on
-# https://www.prahladyeri.com/blog/2016/02/minimal-debian-desktop-setup.html
-# with_kodi_desktop: True
-
-# Adds a passwordless session for kodi standalone DE
-# with_kodi_standalone: True
-# kodi_standalone_username: kodi
-# kodi_standalone_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.
+# Kodi session name and password are updatable (_default password is `kodi`_)
+# kodi_username: kodi
+# kodi_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.

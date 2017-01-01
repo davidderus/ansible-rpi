@@ -14,15 +14,36 @@
 - name: Install Kodi
   apt: state=installed pkg=kodi force=yes
 
+- name: Add new user for media center
+  user:
+    name: "{{ kodi_username }}"
+    comment: "Kodi session"
+    password: "{{ kodi_password_hash }}"
+    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ rpi_shared_group }}
+    state: present
+    append: yes
+
+- name: Create openbox config directory
+  file: path="/home/{{ kodi_username }}/.config/openbox" owner="{{ kodi_username }}" group="{{ kodi_username }}" state=directory
+
+- name: Enforce Kodi opening in standalone mode
+  lineinfile: dest="/home/{{ kodi_username }}/.config/openbox/autostart"
+              regexp="^/usr/bin/kodi-standalone"
+              line="/usr/bin/kodi-standalone &"
+              create=yes
+              state=present
+  become: yes
+  become_user: "{{ kodi_username }}"
+
 - name: Create current user configuration directories
-  file: path={{ item }} state=directory owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0755
+  file: path={{ item }} state=directory owner={{ kodi_username }} group={{ kodi_username }} mode=0755
   with_items:
     - "{{ kodi_user_dir }}"
     - "{{ kodi_user_dir }}/userdata"
 
 - name: Build sources file
-  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
+  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ kodi_username }} group={{ kodi_username }} mode=0600
 
 - name: Enable buffering
-  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
+  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ kodi_username }} group={{ kodi_username }} mode=0600
   when: with_kodi_buffering

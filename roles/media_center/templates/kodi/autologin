@@ -1,3 +1,0 @@
-AUTOLOGIN=yes
-USER={{ kodi_standalone_username }}
-EXEC=/usr/bin/startx.autologin
