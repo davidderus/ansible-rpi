@@ -23,7 +23,7 @@
     state: present
     append: yes
 
-- name: Create openbox config directory
+- name: "Create openbox config directory for {{ kodi_username }}"
   file: path="/home/{{ kodi_username }}/.config/openbox" owner="{{ kodi_username }}" group="{{ kodi_username }}" state=directory
 
 - name: Enforce Kodi opening in standalone mode
