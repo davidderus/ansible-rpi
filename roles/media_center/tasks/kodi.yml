@@ -1,0 +1,28 @@
+---
+
+- name: Add Kodi 16 Custom Repo
+  apt_repository: repo={{ kodi_apt_repo }}
+
+- name: Add Kodi Repo Key
+  apt_key:
+    url: "http://pipplware.pplware.pt/pipplware/key.asc"
+    state: present
+
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Install Kodi
+  apt: state=installed pkg=kodi force=yes
+
+- name: Create current user configuration directories
+  file: path={{ item }} state=directory owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0755
+  with_items:
+    - "{{ kodi_user_dir }}"
+    - "{{ kodi_user_dir }}/userdata"
+
+- name: Build sources file
+  template: src=kodi/sources.xml.j2 dest="{{ kodi_user_dir }}/userdata/sources.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
+
+- name: Enable buffering
+  template: src=kodi/advancedsettings.xml.j2 dest="{{ kodi_user_dir }}/userdata/advancedsettings.xml" owner={{ rpi_user_name }} group={{ rpi_user_name }} mode=0600
+  when: with_kodi_buffering
