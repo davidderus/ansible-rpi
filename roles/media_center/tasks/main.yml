@@ -5,3 +5,6 @@
 
 - include: desktop.yml
   when: with_kodi_desktop
+
+- include: kodi_standalone.yml
+  when: with_kodi_desktop and with_kodi_standalone

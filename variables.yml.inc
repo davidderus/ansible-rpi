@@ -117,3 +117,7 @@ with_vim: True
 # with_kodi_desktop installs a minimal OpenBox desktop based on
 # https://www.prahladyeri.com/blog/2016/02/minimal-debian-desktop-setup.html
 # with_kodi_desktop: True
+
+# Adds a passwordless session for kodi standalone DE. Requires `with_kodi_desktop: True`
+# with_kodi_standalone: True
+# kodi_standalone_username: kodi

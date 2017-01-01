@@ -15,3 +15,6 @@ kodi_read_buffer_factor: 20
 kodi_buffer_size: 139460608
 
 with_kodi_desktop: False
+
+with_kodi_standalone: False
+kodi_standalone_username: kodi

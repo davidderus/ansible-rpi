@@ -1,0 +1,12 @@
+---
+
+# Inspired by http://kodi.wiki/view/HOW-TO:Autostart_Kodi_for_Linux
+
+# Adds a dedicated user with no password
+- name: Add new user for download server
+  user:
+    name: "{{ kodi_standalone_username }}"
+    comment: "Kodi standalone session"
+    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev
+    state: present
+    append: yes
