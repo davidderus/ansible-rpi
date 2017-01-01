@@ -7,7 +7,8 @@
   user:
     name: "{{ kodi_standalone_username }}"
     comment: "Kodi standalone session"
-    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev
+    password: "{{ kodi_standalone_password_hash }}"
+    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ rpi_shared_group }}
     state: present
     append: yes
 
