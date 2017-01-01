@@ -10,3 +10,11 @@
     groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev
     state: present
     append: yes
+
+- name: Install Kodi service
+  template: src=kodi/kodi.service dest=/etc/systemd/system/kodi.service owner=root group=root mode=0644
+  notify: Restart kodi
+
+- name: Enable Kodi service
+  service: name=kodi enabled=true state=started
+  args: "--user {{ kodi_standalone_username }}"

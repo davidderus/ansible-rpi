@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+
+[Unit]
+
+Description = Kodi Media Center Daemon
+After = systemd-user-sessions.service network.target sound.target
+
+[Service]
+User = {{ kodi_standalone_username }}
+Group = {{ kodi_standalone_username }}
+Type = simple
+
+ExecStart = /usr/bin/xinit /usr/bin/dbus-launch --exit-with-session /usr/bin/kodi-standalone -- :0 -nolisten tcp vt7
+
+Restart = on-abort
+RestartSec = 5
+
+PAMName = login # May be ArchLinux specific
+
+[Install]
+WantedBy = multi-user.target
