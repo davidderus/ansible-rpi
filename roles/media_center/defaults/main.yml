@@ -1,5 +1,4 @@
 kodi_apt_repo: "deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /"
-kodi_user_dir: /home/{{ rpi_user_name }}/.kodi
 openbox_config_dir: /home/{{ rpi_user_name }}/.config/openbox
 
 # Arrays of filepaths
@@ -14,4 +13,5 @@ with_kodi_buffering: False
 kodi_read_buffer_factor: 20
 kodi_buffer_size: 139460608
 
-with_kodi_desktop: False
+kodi_username: kodi
+kodi_user_dir: "/home/{{ kodi_username }}/.kodi"

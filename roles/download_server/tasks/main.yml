@@ -53,8 +53,4 @@
   notify: Restart aria2
 
 - name: Enable aria2 daemon on boot
-  service: name=aria2 enabled=true state=started
-
-- service:
-    name: aria2
-    state: restarted
+  service: name=aria2 enabled=true state=restarted
