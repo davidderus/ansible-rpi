@@ -14,7 +14,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - Locale setup
   - System upgrade (*including kernel*)
   - Adding some useful packages (*curl, vim, tmux, git…*)
-  - UFW firewall rules allowing user-specified ports
+  - UFW firewall rules allowing user-specified ports and protocols
   - Logwatch for system status emails (*via SSMTP*)
   - SSH with key-only authentification
   - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
@@ -29,16 +29,14 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - RPC interface for remote monitoring with optionnal SSL encryption
   - Shared downloads directory (*may be replaced by a previously configured network folder*)
 - `media_center`: Turn your Raspberry into a decent customizable media center
-  - Kodi basic installation
+  - Kodi basic installation with separate user
   - Dynamic sources creation (*may be linked to previously configured network folders*)
-  - Buffer handling
-  - Optionnal minimal Openbox setup (*when using a lite image for eg.*)
+  - Buffer handling optimized for a Raspberry
+  - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
 
 ### Incoming
 
-- Separate user for kodi
-- Kodi session with `kodi-standalone` support on startup (_reloadable service_)
-- `swarm_node`: Run Docker containers in a Rpis Swarm
+- `swarm_node`: Setup a Rpi as a Docker Machine and join a Docker Swarm
 
 ## Setup
 
