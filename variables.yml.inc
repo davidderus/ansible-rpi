@@ -49,9 +49,10 @@ ssh_custom_banner: True
 # Firewall
 
 allowed_ports:
-  - 22
-  - 6800 # Aria2 Daemon port
-# - 8070 # Kodi Remote Connection
+  - { port: 22, proto: 'tcp' }
+  - { port: 6800, proto: 'tcp' } # Aria2 Daemon port
+# - { port: 8070, proto: 'tcp' } # Kodi HTTPServer Connection
+# - { port: 9777, proto: 'udp' } # Kodi EventServer Connection
 
 # Wifi handling (disabled by default)
 
@@ -113,6 +114,6 @@ with_vim: True
 # kodi_read_buffer_factor: 20
 # kodi_buffer_size: 139460608
 
-# with_kodi_desktop installs a minimal OpenBox desktop based on
-# https://www.prahladyeri.com/blog/2016/02/minimal-debian-desktop-setup.html
-# with_kodi_desktop: True
+# Kodi session name and password are updatable (_default password is `kodi`_)
+# kodi_username: kodi
+# kodi_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.

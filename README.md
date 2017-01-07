@@ -1,8 +1,10 @@
-# ansible-rpi 0.3.0
+# ansible-rpi 0.3.1
 
 ## Purpose
 
-Make Raspberry Pi up and running in a few command
+Make Raspberry Pi up and running in a few command.
+
+Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ## Roles
 
@@ -12,7 +14,7 @@ Make Raspberry Pi up and running in a few command
   - Locale setup
   - System upgrade (*including kernel*)
   - Adding some useful packages (*curl, vim, tmux, git…*)
-  - UFW firewall rules allowing user-specified ports
+  - UFW firewall rules allowing user-specified ports and protocols
   - Logwatch for system status emails (*via SSMTP*)
   - SSH with key-only authentification
   - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
@@ -27,18 +29,14 @@ Make Raspberry Pi up and running in a few command
   - RPC interface for remote monitoring with optionnal SSL encryption
   - Shared downloads directory (*may be replaced by a previously configured network folder*)
 - `media_center`: Turn your Raspberry into a decent customizable media center
-  - Kodi basic installation
+  - Kodi basic installation with separate user
   - Dynamic sources creation (*may be linked to previously configured network folders*)
-  - Buffer handling
-  - Optionnal minimal Openbox setup (*when using a lite image for eg.*)
+  - Buffer handling optimized for a Raspberry
+  - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
 
 ### Incoming
 
-- `swarm_node`: Run Docker containers in a Rpis Swarm
-
-### TODO
-
-- Use as an ansible module
+- `swarm_node`: Setup a Rpi as a Docker Machine and join a Docker Swarm
 
 ## Setup
 
@@ -56,7 +54,7 @@ cp variables.yml.inc host_vars/my-host.yml
 
 First update the `hosts` file to target your Rpis.
 
-I recommend using an up-to-date Raspbian Lite image.
+I recommend using an up-to-date [Raspbian Lite image](https://downloads.raspberrypi.org/raspbian_lite_latest).
 
 Make sure that the Rpi is SSHable (**latest raspbian lite images come with SSH
 disabled by default, creating a file with name "ssh" in boot partition is
