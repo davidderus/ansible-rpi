@@ -1,7 +1,7 @@
 ---
 
 - name: Allow specific ports connections
-  ufw: rule=allow port={{ item }} proto=tcp
+  ufw: rule=allow port={{ item.port }} proto={{ item.proto }}
   with_items:
     - "{{ allowed_ports }}"
 

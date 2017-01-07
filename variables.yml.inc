@@ -49,10 +49,10 @@ ssh_custom_banner: True
 # Firewall
 
 allowed_ports:
-  - 22
-  - 6800 # Aria2 Daemon port
-# - 8070 # Kodi HTTPServer Connection
-# - 9777 # Kodi EventServer Connection
+  - { port: 22, proto: 'tcp' }
+  - { port: 6800, proto: 'tcp' } # Aria2 Daemon port
+# - { port: 8070, proto: 'tcp' } # Kodi HTTPServer Connection
+# - { port: 9777, proto: 'udp' } # Kodi EventServer Connection
 
 # Wifi handling (disabled by default)
 
