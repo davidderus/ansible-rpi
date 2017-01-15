@@ -1,2 +1,2 @@
-[download_servers]
+[download-servers]
 127.0.0.1

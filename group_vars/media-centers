@@ -1,0 +1,4 @@
+---
+
+mc_shared_group: "{{ server_shared_group }}"
+mc_user_name: "{{ server_user_name }}"
