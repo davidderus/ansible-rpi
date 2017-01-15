@@ -20,7 +20,7 @@
   when: upgrade_distribution|changed
 
 - name: Setup locale
-  lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
+  locale_gen: name={{item}} state=present
   with_items: "{{ server_locales }}"
   register: update_locale
 

@@ -10,9 +10,9 @@ server_user_name: neo
 # Must be a SHA-512 hash with like 5000 rounds (not as much as Ansible password_hash – 656000 — otherwise authentification may take a while)
 server_user_password_hash: $6$KU0KJ6OtZYzWlhbj$HWRhIMQL37UfEBkR1nwKre08LbM9LvAZr/lZ7iHz9VW7AfSu88RaADbtoxfJEwiW3DaWIzKUnu8mweeTg9Qxw.
 
-# Updating locales if required (default to "en_US.UTF-8 UTF-8")
+# Updating locales if required (default to en_US.UTF-8)
 server_locales:
-  - "fr_FR.UTF-8 UTF-8"
+  - fr_FR.UTF-8
 
 # Enable custom hostname for Rpi and install zeroconf and libnss-mdns
 # with_custom_hostname: True
