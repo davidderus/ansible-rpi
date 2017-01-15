@@ -6,7 +6,6 @@
             owner=root
             group=root
             mode=0644
-            backup=yes
   notify: Restart docker
 
 - name: Enable Docker daemon on boot
