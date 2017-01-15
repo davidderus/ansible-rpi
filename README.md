@@ -36,7 +36,8 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ### Incoming
 
-- `swarm_node`: Setup a Rpi as a Docker Machine and join a Docker Swarm
+- `docker`: Handle a Docker Rpi setup (via [HypriotOS](https://blog.hypriot.com/))
+- Segmentation into roles
 
 ## Setup
 
