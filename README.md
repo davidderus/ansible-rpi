@@ -111,3 +111,19 @@ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_c
 
 [1](https://github.com/ansible/ansible/issues/15326)
 [2](https://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module)
+
+## Docker Support
+
+In order to ease Docker handling on Rpi, I recommend the
+[HypriotOS image](http://blog.hypriot.com/downloads/).
+
+The `common` role will secure the HypriotOS Rpi in a way that by default:
+
+- `docker-machine create` will **fail**
+  (_default user must have a NOPASSD sudo, see [](https://docs.docker.com/machine/drivers/generic/#/sudo-privileges)_)
+- Docker daemon tcp port (_2376_) will be unreachable (_however you can enable it manually in allowed_ports var_)
+
+You may want to look to [this](https://github.com/DieterReuter/arm-docker-fixes/tree/master/001-fix-docker-machine-1.8.0-create-for-arm)
+for a manual `docker-machine` setup.
+
+Docker-machine and Raspbian Docker support may come in a future release.
