@@ -1,5 +1,9 @@
 ---
 
+# Locales
+server_locales:
+  - "en_US.UTF-8 UTF-8"
+
 # Packages
 required_packages:
   - ufw
