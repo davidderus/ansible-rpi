@@ -30,5 +30,5 @@
 # Super optionnal (may break current process if you're using the user)
 
 - include: user_unsudo.yml server_unsudo_user={{ item }}
-  with_items: "{{ server_unsudoed_users }}"
+  with_items: "{{ server_unsudoed_users|default([]) }}"
   when: server_unsudoed_users is defined
