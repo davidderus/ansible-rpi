@@ -24,6 +24,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - Optionnal custom SSH banner
   - Optionnal Wifi config
   - Optionnal Mosh support
+  - Optionnal unsudo of the pi user
 - `download_server`: Turn the Rpi in a download server for ddl and torrents
   - Aria2 daemon
   - RPC interface for remote monitoring with optionnal SSL encryption

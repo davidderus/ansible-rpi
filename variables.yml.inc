@@ -10,7 +10,7 @@ server_user_name: neo
 # Must be a SHA-512 hash with like 5000 rounds (not as much as Ansible password_hash – 656000 — otherwise authentification may take a while)
 server_user_password_hash: $6$KU0KJ6OtZYzWlhbj$HWRhIMQL37UfEBkR1nwKre08LbM9LvAZr/lZ7iHz9VW7AfSu88RaADbtoxfJEwiW3DaWIzKUnu8mweeTg9Qxw.
 
-# Updating locales
+# Updating locales if required (default to "en_US.UTF-8 UTF-8")
 server_locales:
   - "fr_FR.UTF-8 UTF-8"
 
@@ -80,6 +80,10 @@ with_vim: True
 # Default type to cifs. Available at /media/ for automount_group
 # automount_network_folders:
 #   - { name: 'mydrive', network_folder: '//192.168.0.10/mydrive', domain: 'WORKGROUP', user: 'my_name', password: 'my_password' }
+
+# It may also be a good idea to unprivileged the pi user after creating the new server owner
+# server_unsudoed_users:
+#   - pi
 
 ########################
 # Download server Role #
