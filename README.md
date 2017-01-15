@@ -134,3 +134,4 @@ Docker-machine and Raspbian Docker support may come in a future release.
 - `storage_driver` is `overlay`
 - The `tlsverify` flag is enabled, and `tlscacert`, `tlscert`, `tlskey`
 - `LimitNOFILE` and `LimitNPROC` are set, but `LimitCORE` is not
+- iptables addition by Docker are deactivated

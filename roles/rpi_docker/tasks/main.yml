@@ -1,7 +1,12 @@
 ---
 
 - name: Install Docker custom service
-  template: src=docker/docker.service dest=/etc/systemd/system/docker.service owner=root group=root mode=0644
+  template: src=docker/docker.service
+            dest=/etc/systemd/system/docker.service
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
   notify: Restart docker
 
 - name: Enable Docker daemon on boot
