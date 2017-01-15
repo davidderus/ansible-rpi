@@ -1,6 +1,6 @@
 ---
 
-- name: Configure and securise any Rpi
+- name: Configure and securise any Debian server
 
   hosts: servers
   roles:

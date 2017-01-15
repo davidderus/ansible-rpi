@@ -1,6 +1,6 @@
 ---
 
-# Here we're assuming that all hosts are Raspberry Pi
+# We're updating server variables for rpis
 
 server_host_name: "rpi-{{ server_user_name }}"
 server_shared_group: "rpi-{{ server_user_name }}-shared"

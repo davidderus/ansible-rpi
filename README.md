@@ -46,11 +46,11 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ```
 # First
-cp hosts.inc hosts
+cp hosts.inc /etc/ansible/hosts
 
 # Then
 cp playbook.yml.inc playbook.yml
-cp variables.yml.inc host_vars/my-host.yml
+cp variables.yml.inc /etc/ansible/host_vars/my-host.yml
 ```
 
 ### Usage
@@ -68,6 +68,9 @@ Then the first time run:
 ```
 ansible-playbook playbook.yml -u pi --ask-pass
 ```
+
+**You can also store user name in inventory file and user's pass in your Ansible
+vault.**
 
 ### Dev with Vagrant
 
@@ -88,6 +91,9 @@ ansible all -m ping -u neo
 # Execute updated playbook
 ansible-playbook playbook.yml -u neo --ask-become-pass
 ```
+
+**You can also store user name in inventory file and user's pass in your Ansible
+vault.**
 
 ## User password generation
 
