@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+# HypriotOS only!
+
+[Service]
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver {{ rd_storage_driver }} --tlsverify --tlscacert {{ rd_tlscacert }} --tlscert {{ rd_tlscert }} --tlskey {{ rd_tlskey }} --label provider=generic
+MountFlags=slave
+LimitNOFILE={{ rd_limit_nofile }}
+LimitNPROC={{ rd_limit_nproc }}
+LimitCORE={{ rd_limit_core }}
+Environment=
+
+[Install]
+WantedBy=multi-user.target

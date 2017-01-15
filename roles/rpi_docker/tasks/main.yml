@@ -1,0 +1,8 @@
+---
+
+- name: Install Docker custom service
+  template: src=docker/docker.service dest=/etc/systemd/system/docker.service owner=root group=root mode=0644
+  notify: Restart docker
+
+- name: Enable Docker daemon on boot
+  service: name=docker enabled=true state=restarted

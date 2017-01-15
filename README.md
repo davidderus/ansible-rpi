@@ -121,9 +121,16 @@ The `common` role will secure the HypriotOS Rpi in a way that by default:
 
 - `docker-machine create` will **fail**
   (_default user must have a NOPASSD sudo, see [](https://docs.docker.com/machine/drivers/generic/#/sudo-privileges)_)
-- Docker daemon tcp port (_2376_) will be unreachable (_however you can enable it manually in allowed_ports var_)
+- Docker daemon tcp port (_2376_) will be unreachable (_however you can enable it manually in allowed_ports var_) but is started by default
+- Docker unix socket is accessible
 
 You may want to look to [this](https://github.com/DieterReuter/arm-docker-fixes/tree/master/001-fix-docker-machine-1.8.0-create-for-arm)
 for a manual `docker-machine` setup.
 
 Docker-machine and Raspbian Docker support may come in a future release.
+
+### Defaults
+
+- `storage_driver` is `overlay`
+- The `tlsverify` flag is enabled, and `tlscacert`, `tlscert`, `tlskey`
+- `LimitNOFILE` and `LimitNPROC` are set, but `LimitCORE` is not
