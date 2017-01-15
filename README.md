@@ -37,8 +37,8 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ### Incoming
 
-- `docker`: Handle a Docker Rpi setup (via [HypriotOS](https://blog.hypriot.com/))
 - Segmentation into roles
+- `docker`: Handle a Docker Rpi setup (via [HypriotOS](https://blog.hypriot.com/))
 
 ## Setup
 
