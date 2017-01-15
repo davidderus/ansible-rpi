@@ -15,7 +15,7 @@
     name: "/mnt/{{ item.name }}"
     src: "LABEL={{ item.label }}"
     fstype: "{{ item.type }}"
-    opts: "gid={{ rpi_shared_group }}"
+    opts: "gid={{ server_shared_group }}"
     state: mounted
   with_items: "{{ automount_local_devices }}"
 

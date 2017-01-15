@@ -15,14 +15,14 @@
     - gmrun
     - gnome-terminal
 
-- name: "Create openbox config directory for {{ rpi_user_name }}"
-  file: path="{{ openbox_config_dir }}" owner="{{ rpi_user_name }}" group="{{ rpi_user_name }}" state=directory
+- name: "Create openbox config directory for {{ server_user_name }}"
+  file: path="{{ openbox_config_dir }}" owner="{{ server_user_name }}" group="{{ server_user_name }}" state=directory
   register: create_openbox_config
 
-- name: "Setting up default Openbox config for {{ rpi_user_name }}"
+- name: "Setting up default Openbox config for {{ server_user_name }}"
   shell: cp /etc/xdg/openbox/* "{{ openbox_config_dir }}"
   become: yes
-  become_user: "{{ rpi_user_name }}"
+  become_user: "{{ server_user_name }}"
   when: create_openbox_config|changed
 
 - name: Enforce lxpanel opening
@@ -32,4 +32,4 @@
               create=yes
               state=present
   become: yes
-  become_user: "{{ rpi_user_name }}"
+  become_user: "{{ server_user_name }}"

@@ -19,12 +19,14 @@
     name: "{{ kodi_username }}"
     comment: "Kodi session"
     password: "{{ kodi_password_hash }}"
-    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ rpi_shared_group }}
-    state: present
+    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ server_shared_group }}
     append: yes
+    state: present
 
 - name: "Create openbox config directory for {{ kodi_username }}"
   file: path="/home/{{ kodi_username }}/.config/openbox" owner="{{ kodi_username }}" group="{{ kodi_username }}" state=directory
+  become: yes
+  become_user: "{{ kodi_username }}"
 
 - name: Enforce Kodi opening in standalone mode
   lineinfile: dest="/home/{{ kodi_username }}/.config/openbox/autostart"

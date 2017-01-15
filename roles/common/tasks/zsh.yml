@@ -6,19 +6,19 @@
 - name: Clone oh-my-zsh repo
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
   become: yes
-  become_user: "{{ rpi_user_name }}"
+  become_user: "{{ server_user_name }}"
 
 - name: Setup default zshrc
   copy: remote_src=true src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc backup=yes mode=0644
   become: yes
-  become_user: "{{ rpi_user_name }}"
+  become_user: "{{ server_user_name }}"
 
 - name: Change zsh theme
-  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ rpi_zsh_theme|default('junkfood') }}\"" state=present
+  lineinfile: dest=~/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ server_zsh_theme|default('junkfood') }}\"" state=present
   become: yes
-  become_user: "{{ rpi_user_name }}"
+  become_user: "{{ server_user_name }}"
 
 - name: Update user default shell
-  user: name={{ rpi_user_name }}
+  user: name={{ server_user_name }}
         shell=/bin/zsh
         state=present

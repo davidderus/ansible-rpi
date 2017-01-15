@@ -1,7 +1,7 @@
 ---
 
 - name: Updating hostname (1/2)
-  hostname: name={{ rpi_host_name }}
+  hostname: name={{ server_host_name }}
   register: hostname_change
 
 # A second definitive update is needed on certain Rpis
@@ -14,7 +14,7 @@
 - name: Update /etc/hosts
   lineinfile: dest=/etc/hosts
               regexp="^127\.0\.1\.1"
-              line="127.0.1.1{{'\t'}}{{ rpi_host_name }}"
+              line="127.0.1.1{{'\t'}}{{ server_host_name }}"
               backup=yes
               state=present
 

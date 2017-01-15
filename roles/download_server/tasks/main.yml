@@ -4,7 +4,7 @@
   apt: state=installed pkg=aria2
 
 - name: Add new user for download server
-  user: name={{ ds_user_name }} groups={{ rpi_shared_group }} comment="Aria2 Download Server" state=present append=yes
+  user: name={{ ds_user_name }} groups={{ server_shared_group }} comment="Aria2 Download Server" state=present append=yes
 
 - name: Make downloads directory
   file: path={{ ds_downloads_directory }} state=directory mode=0770
