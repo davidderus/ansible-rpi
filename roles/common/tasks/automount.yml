@@ -7,20 +7,19 @@
     - cifs-utils
 
 - name: Create local devices folders
-  file: dest=/mnt/{{ item.name }} state=directory mode=0770
-  with_items: "{{ automount_network_folders }}"
+  file: dest=/mnt/{{ item.name }} state=directory mode=0770 group={{ automount_group }}
+  with_items: "{{ automount_local_devices }}"
 
 - name: Mount local devices by label
   mount:
     name: "/mnt/{{ item.name }}"
     src: "LABEL={{ item.label }}"
     fstype: "{{ item.type }}"
-    opts: "gid={{ rpi_shared_group }}"
     state: mounted
   with_items: "{{ automount_local_devices }}"
 
-- name: Create remote folders
-  file: dest=/media/{{ item.name }} state=directory mode=0770
+- name: "Create remote folders for group {{ automount_group }}"
+  file: dest=/media/{{ item.name }} state=directory mode=0770 group={{ automount_group }}
   with_items: "{{ automount_network_folders }}"
 
 - name: Mount remote folders
@@ -28,6 +27,6 @@
     name: "/media/{{ item.name }}"
     src: "{{ item.network_folder }}"
     fstype: "{{ item.type|default('cifs') }}"
-    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},iocharset=utf8,file_mode=0770,dir_mode=0770,noperm,_netdev"
+    opts: "domain={{ item.domain }},username={{ item.user }},password={{ item.password }},file_mode=0770,dir_mode=0770,noperm,iocharset=utf8,_netdev"
     state: mounted
   with_items: "{{ automount_network_folders }}"
