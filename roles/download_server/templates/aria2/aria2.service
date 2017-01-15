@@ -8,7 +8,7 @@ After=network.target
 Type=forking
 ExecStart=/usr/bin/aria2c --conf-path=/home/{{ ds_user_name }}/.aria2/aria2.conf
 User={{ ds_user_name }}
-Group={{ server_shared_group }}
+Group={{ ds_shared_group }}
 WorkingDirectory={{ ds_downloads_directory }}
 
 [Install]

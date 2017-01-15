@@ -19,7 +19,7 @@
     name: "{{ kodi_username }}"
     comment: "Kodi session"
     password: "{{ kodi_password_hash }}"
-    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ server_shared_group }}
+    groups: cdrom,audio,video,plugdev,users,dialout,dip,input,netdev,{{ mc_shared_group }}
     append: yes
     state: present
 
