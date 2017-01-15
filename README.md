@@ -47,6 +47,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 cp hosts.inc hosts
 
 # Then
+cp playbook.yml.inc playbook.yml
 cp variables.yml.inc host_vars/my-host.yml
 ```
 

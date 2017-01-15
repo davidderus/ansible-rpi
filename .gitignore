@@ -3,3 +3,5 @@ playbook.retry
 
 hosts
 variables.yml
+/*.yml
+/*.retry
