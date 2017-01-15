@@ -18,6 +18,9 @@ server_locales:
 # with_custom_hostname: True
 # server_host_name: "rpi-{{ server_user_name }}"
 
+# You can define a group shared between roles (here it will be rpi-neo-shared)
+# server_shared_group: mygroup
+
 # server_zsh_theme: robbyrussell
 
 # SSMTP
@@ -68,12 +71,13 @@ with_vim: True
 # with_mosh: True
 
 # with_automount: True
+# By default the `automount_group` is `root` or `server_shared_group` if defined
 
-# Type is required. Mounted devices are available at /mnt/ for shared_group
+# Type is required. Mounted devices are available at /mnt/ for automount_group
 # automount_local_devices:
 #   - { name: 'mydevice', label: 'MY_DEVICE', type: 'ext4' }
 
-# Default type to cifs. Available at /media/ for shared_group
+# Default type to cifs. Available at /media/ for automount_group
 # automount_network_folders:
 #   - { name: 'mydrive', network_folder: '//192.168.0.10/mydrive', domain: 'WORKGROUP', user: 'my_name', password: 'my_password' }
 

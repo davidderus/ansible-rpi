@@ -32,7 +32,7 @@
   setup:
   when: hostname_change|changed
 
-- name: Rebooting Rpi
+- name: Rebooting server
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
   async: 1
   poll: 0
