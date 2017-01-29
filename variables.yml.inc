@@ -74,9 +74,10 @@ with_vim: True
 # with_automount: True
 # By default the `automount_group` is `root` or `server_shared_group` if defined
 
-# Type is required. Mounted devices are available at /mnt/ for automount_group
+# Type and UUID are required. Mounted devices are available at /mnt/ for automount_group
+# To get those informations, run `sudo lsblk -f` against the host.
 # automount_local_devices:
-#   - { name: 'mydevice', label: 'MY_DEVICE', type: 'ext4' }
+#   - { name: 'mydevice', uuid: 'MY-DEVICE-UUID', type: 'ext4' }
 
 # Default type to cifs. Available at /media/ for automount_group
 # automount_network_folders:

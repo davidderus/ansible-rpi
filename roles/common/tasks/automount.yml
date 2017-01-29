@@ -13,8 +13,9 @@
 - name: Mount local devices by label
   mount:
     name: "/mnt/{{ item.name }}"
-    src: "LABEL={{ item.label }}"
+    src: "UUID={{ item.uuid }}"
     fstype: "{{ item.type }}"
+    opts: "auto,nofail,noatime,rw"
     state: mounted
   with_items: "{{ automount_local_devices }}"
 
