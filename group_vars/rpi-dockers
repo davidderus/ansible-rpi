@@ -1,0 +1,4 @@
+---
+
+# Needed for HypriotOS
+with_custom_hostname: False

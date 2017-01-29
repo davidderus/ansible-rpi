@@ -23,3 +23,11 @@
     - media_center
 
   become: yes
+
+- name: Setup a Docker host
+
+  hosts: rpi-dockers
+  roles:
+    - rpi_docker
+
+  become: yes

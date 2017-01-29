@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+# HypriotOS only!
+
+[Service]
+Environment='DOCKER_OPTS=--iptables={{ rd_iptables }} --ip-masq={{ rd_iptables }}'
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver {{ rd_storage_driver }} --tlsverify --tlscacert {{ rd_tlscacert }} --tlscert {{ rd_tlscert }} --tlskey {{ rd_tlskey }} --label provider=generic "$DOCKER_OPTS"
+MountFlags=slave
+LimitNOFILE={{ rd_limit_nofile }}
+LimitNPROC={{ rd_limit_nproc }}
+LimitCORE={{ rd_limit_core }}
+{% if rd_always_restart %}
+Restart=always
+RestartSec=30
+{% endif %}
+
+[Install]
+WantedBy=multi-user.target

@@ -19,6 +19,7 @@ server_locales:
 # server_host_name: "rpi-{{ server_user_name }}"
 
 # You can define a group shared between roles (here it will be rpi-neo-shared)
+# This is required for mixing server role with download_server and media_center
 # server_shared_group: mygroup
 
 # server_zsh_theme: robbyrussell
