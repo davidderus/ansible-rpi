@@ -1,5 +1,15 @@
 ---
 
+- name: Check for Hypriot installation
+  set_fact:
+    rpi_docker_hypriot: "{{ 'hypriotos' in ansible_kernel }}"
+
+- debug: msg="This is not an Hypriot image. This setup may fail, use it at your own risk"
+  when: not rpi_docker_hypriot
+
+- debug: msg="Hypriot image detected"
+  when: rpi_docker_hypriot
+
 - name: Install Docker custom service
   template: src=docker/docker.service
             dest=/etc/systemd/system/docker.service
