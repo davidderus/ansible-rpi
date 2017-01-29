@@ -22,5 +22,8 @@
 - name: Add Ansible required pip packages
   pip: name={{ item.name }} version={{ item.version }} state=present
   with_items:
-    - { name: 'docker-py', version: '1.7.0' }
-    - { name: 'docker-compose', version: '1.7.0' }
+    # Disabling docker-py install as the right version is set by docker-compose
+    # Also, freezing docker-compose version to prevent this:
+    # https://github.com/ansible/ansible/issues/20492
+    #- { name: 'docker-py', version: '2.0' }
+    - { name: 'docker-compose', version: '1.9.0' }
