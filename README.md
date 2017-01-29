@@ -127,15 +127,9 @@ The `rpi_docker` role is tested with it, but may work with other setups.
 Modify the following vars in order to adapt to your device:
 
 ```yml
-rd_storage_driver: overlay
-rd_tlscacert: /etc/docker/ca.pem
-rd_tlscert: /etc/docker/server.pem
-rd_tlskey: /etc/docker/server-key.pem
 rd_limit_nofile: 1048576
 rd_limit_nproc: 1048576
 rd_limit_core: infinity
-rd_iptables: false
-rd_always_restart: false
 ```
 
 ### Security
