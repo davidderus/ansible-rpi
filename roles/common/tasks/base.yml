@@ -7,7 +7,7 @@
   apt: upgrade=yes
   register: upgrade_distribution
 
-- name: Rebooting Rpi
+- name: Rebooting server
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
   async: 1
   poll: 0
@@ -20,8 +20,8 @@
   when: upgrade_distribution|changed
 
 - name: Setup locale
-  lineinfile: dest=/etc/locale.gen regexp="^#{{item}}" line="{{item}}"
-  with_items: "{{ rpi_locale }}"
+  locale_gen: name={{item}} state=present
+  with_items: "{{ server_locales }}"
   register: update_locale
 
 - name: Generate locales
@@ -32,19 +32,10 @@
   apt: name={{ item }} state=latest
   with_items: "{{ required_packages }}"
 
-- name: Add new group for shared items (downloads and other roles)
-  group: state=present name={{ rpi_shared_group }}
-
-- name: Create new Rpi owner
-  user: name={{ rpi_user_name }}
-        groups={{ rpi_shared_group }},pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi,tty
-        password={{ rpi_user_password_hash }}
+- name: Create new server owner
+  user: name={{ server_user_name }}
+        groups={{ server_user_groups }}
+        password={{ server_user_password_hash }}
         shell=/bin/bash
         append=yes
         state=present
-
-- name: Remove pi user from sudoers
-  lineinfile: dest=/etc/sudoers regexp="^pi ALL" state=absent backup=yes
-
-- name: Limit pi's groups
-  user: name=pi state=present groups=pi

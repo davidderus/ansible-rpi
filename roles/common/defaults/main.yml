@@ -1,11 +1,15 @@
 ---
 
+# Locales
+server_locales:
+  - en_US.UTF-8
+
 # Packages
 required_packages:
   - ufw
   - fail2ban # Using defaults
   - unattended-upgrades # Using defaults
-  - logwatch
+  - logwatch # Using defaults
   - rsync
   - htop
   - curl
@@ -24,6 +28,7 @@ with_custom_hostname: False
 
 automount_local_devices: []
 automount_network_folders: []
+automount_group: "{{ server_shared_group|default('root') }}"
 
 ssmtp_mailhub: smtp.gmail.com:587
 ssmtp_auth_user: "{{ ssmtp_email }}"

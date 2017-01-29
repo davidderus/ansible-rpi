@@ -1,0 +1,7 @@
+---
+
+- name: "Remove {{ server_unsudo_user }} user from sudoers"
+  lineinfile: dest=/etc/sudoers regexp="^{{ server_unsudo_user }} ALL" state=absent backup=yes
+
+- name: "Limit {{ server_unsudo_user }}'s groups"
+  user: name={{ server_unsudo_user }} state=present groups={{ server_unsudo_user }}

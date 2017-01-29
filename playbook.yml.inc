@@ -1,8 +1,8 @@
 ---
 
-- name: Configure and securise any Rpi
+- name: Configure and securise any Debian server
 
-  hosts: all
+  hosts: servers
   roles:
     - common
 
@@ -10,7 +10,7 @@
 
 - name: Setup and manage a download server
 
-  hosts: download_servers
+  hosts: download-servers
   roles:
     - download_server
 
@@ -18,8 +18,16 @@
 
 - name: Setup a media center
 
-  hosts: media_centers
+  hosts: media-centers
   roles:
     - media_center
+
+  become: yes
+
+- name: Setup a Docker host
+
+  hosts: rpi-dockers
+  roles:
+    - rpi_docker
 
   become: yes

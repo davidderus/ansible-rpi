@@ -1,7 +1,7 @@
 ---
 
 - name: Add authorized_keys for the user
-  authorized_key: user={{ rpi_user_name }} key="{{ lookup('file', item) }}"
+  authorized_key: user={{ server_user_name }} key="{{ lookup('file', item) }}"
   with_items:
     - "{{ ssh_public_keys }}"
 

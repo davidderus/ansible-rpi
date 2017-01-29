@@ -1,0 +1,39 @@
+---
+
+- name: Check for Hypriot installation
+  set_fact:
+    rpi_docker_hypriot: "{{ 'hypriotos' in ansible_kernel }}"
+
+- debug: msg="This is not an Hypriot image. This setup may fail, use it at your own risk"
+  when: not rpi_docker_hypriot
+
+- debug: msg="Hypriot image detected"
+  when: rpi_docker_hypriot
+
+- name: Install Docker custom service
+  template: src=docker/docker.service
+            dest=/etc/systemd/system/docker.service
+            owner=root
+            group=root
+            mode=0644
+  notify: Restart docker
+
+- name: Enable Docker daemon on boot
+  service: name=docker enabled=true state=restarted
+
+- name: Install setuptools
+  apt: name=python-setuptools state=latest
+
+# Using apt for pip was triggering an ImportError
+- name: Install pip
+  easy_install: name=pip state=latest
+
+# See https://docs.ansible.com/ansible/guide_docker.html#requirements
+- name: Add Ansible required pip packages
+  pip: name={{ item.name }} version={{ item.version }} state=present
+  with_items:
+    # Disabling docker-py install as the right version is set by docker-compose
+    # Also, freezing docker-compose version to prevent this:
+    # https://github.com/ansible/ansible/issues/20492
+    #- { name: 'docker-py', version: '2.0' }
+    - { name: 'docker-compose', version: '1.9.0' }

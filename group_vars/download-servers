@@ -1,0 +1,3 @@
+---
+
+ds_shared_group: "{{ server_shared_group }}"

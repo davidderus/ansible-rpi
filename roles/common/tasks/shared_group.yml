@@ -1,0 +1,4 @@
+---
+
+- name: Add new group for shared items between roles
+  group: state=present name={{ server_shared_group }}

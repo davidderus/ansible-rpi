@@ -1,0 +1,8 @@
+---
+
+# We're updating server variables for rpis
+
+server_host_name: "rpi-{{ server_user_name }}"
+server_shared_group: "rpi-{{ server_user_name }}-shared"
+
+server_user_groups: "{{ server_shared_group }},pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi,tty"

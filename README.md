@@ -1,4 +1,4 @@
-# ansible-rpi 0.3.1
+# ansible-rpi 0.4.0
 
 ## Purpose
 
@@ -24,6 +24,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - Optionnal custom SSH banner
   - Optionnal Wifi config
   - Optionnal Mosh support
+  - Optionnal unsudo of the pi user
 - `download_server`: Turn the Rpi in a download server for ddl and torrents
   - Aria2 daemon
   - RPC interface for remote monitoring with optionnal SSL encryption
@@ -33,10 +34,14 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - Dynamic sources creation (*may be linked to previously configured network folders*)
   - Buffer handling optimized for a Raspberry
   - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
+- `rpi_docker`: Setup and enable control of a distant Raspberry Pi Docker host via Ansible
+  - [HypriotOS](https://blog.hypriot.com/) oriented setup
+  - Docker containers and deamon are behind the firewall by default (*see Docker Support for more infos*)
+  - Ansible tools are setup (*allowing you to use docker_container, docker_image Ansible modules…*)
 
 ### Incoming
 
-- `swarm_node`: Setup a Rpi as a Docker Machine and join a Docker Swarm
+- Segmentation into roles
 
 ## Setup
 
@@ -44,10 +49,11 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ```
 # First
-cp hosts.inc hosts
+cp hosts.inc /etc/ansible/hosts
 
 # Then
-cp variables.yml.inc host_vars/my-host.yml
+cp playbook.yml.inc playbook.yml
+cp variables.yml.inc /etc/ansible/host_vars/my-host.yml
 ```
 
 ### Usage
@@ -65,6 +71,9 @@ Then the first time run:
 ```
 ansible-playbook playbook.yml -u pi --ask-pass
 ```
+
+**You can also store user name in inventory file and user's pass in your Ansible
+vault.**
 
 ### Dev with Vagrant
 
@@ -86,6 +95,9 @@ ansible all -m ping -u neo
 ansible-playbook playbook.yml -u neo --ask-become-pass
 ```
 
+**You can also store user name in inventory file and user's pass in your Ansible
+vault.**
+
 ## User password generation
 
 `password_hash` is a useful Jinja filter but uses 656000 rounds for SHA512 hashing.
@@ -102,3 +114,41 @@ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_c
 
 [1](https://github.com/ansible/ansible/issues/15326)
 [2](https://docs.ansible.com/ansible/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module)
+
+## Docker Support
+
+In order to ease Docker handling on Rpi, I recommend the
+[HypriotOS image](http://blog.hypriot.com/downloads/).
+
+### Current state
+
+The `rpi_docker` role is tested with it, but may work with other setups.
+
+Modify the following vars in order to adapt to your device:
+
+```yml
+rd_limit_nofile: 1048576
+rd_limit_nproc: 1048576
+rd_limit_core: infinity
+```
+
+### Security
+
+The `common` role will secure the HypriotOS Rpi in a way that by default:
+
+- `docker-machine create` will **fail**
+  (_default user must have a NOPASSD sudo, see [](https://docs.docker.com/machine/drivers/generic/#/sudo-privileges)_)
+- Docker daemon tcp port (_2376_) will be unreachable (_however you can enable it manually in allowed_ports var_) but is started by default
+- Docker unix socket is accessible
+
+You may want to look to [this](https://github.com/DieterReuter/arm-docker-fixes/tree/master/001-fix-docker-machine-1.8.0-create-for-arm)
+for a manual `docker-machine` setup.
+
+Docker-machine and Raspbian Docker support may come in a future release.
+
+### Defaults
+
+- `storage_driver` is `overlay`
+- The `tlsverify` flag is enabled, and `tlscacert`, `tlscert`, `tlskey`
+- `LimitNOFILE` and `LimitNPROC` are set, but `LimitCORE` is not
+- iptables addition by Docker are deactivated
