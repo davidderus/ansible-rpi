@@ -34,11 +34,14 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
   - Dynamic sources creation (*may be linked to previously configured network folders*)
   - Buffer handling optimized for a Raspberry
   - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
+- `rpi_docker`: Setup and enable control of a distant Raspberry Pi Docker host via Ansible
+  - [HypriotOS](https://blog.hypriot.com/) oriented setup
+  - Docker containers and deamon are behind the firewall by default (*see Docker Support for more infos*)
+  - Ansible tools are setup (*allowing you to use docker_container, docker_image Ansible modules…*)
 
 ### Incoming
 
 - Segmentation into roles
-- `docker`: Handle a Docker Rpi setup (via [HypriotOS](https://blog.hypriot.com/))
 
 ## Setup
 
@@ -116,6 +119,26 @@ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_c
 
 In order to ease Docker handling on Rpi, I recommend the
 [HypriotOS image](http://blog.hypriot.com/downloads/).
+
+### Current state
+
+The `rpi_docker` role is tested with it, but may work with other setups.
+
+Modify the following vars in order to adapt to your device:
+
+```yml
+rd_storage_driver: overlay
+rd_tlscacert: /etc/docker/ca.pem
+rd_tlscert: /etc/docker/server.pem
+rd_tlskey: /etc/docker/server-key.pem
+rd_limit_nofile: 1048576
+rd_limit_nproc: 1048576
+rd_limit_core: infinity
+rd_iptables: false
+rd_always_restart: false
+```
+
+### Security
 
 The `common` role will secure the HypriotOS Rpi in a way that by default:
 

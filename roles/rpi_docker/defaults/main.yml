@@ -7,5 +7,5 @@ rd_tlskey: /etc/docker/server-key.pem
 rd_limit_nofile: 1048576
 rd_limit_nproc: 1048576
 rd_limit_core: infinity
-rd_iptables: "false"
-rd_always_restart: False
+rd_iptables: false
+rd_always_restart: false
