@@ -127,3 +127,22 @@ with_vim: True
 # Kodi session name and password are updatable (_default password is `kodi`_)
 # kodi_username: kodi
 # kodi_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.
+
+###################
+# Rpi Docker Role #
+###################
+
+# Change the storage driver
+# rd_storage_driver: overlay
+
+# Update limits
+# rd_limit_nofile: 1048576
+# rd_limit_nproc: 1048576
+# rd_limit_core: infinity
+
+# Deactivate iptables addition by Docker (_thus enabling custom NAT and UFW forward policy_)
+# rd_iptables: false
+
+# Custom bridge (_if needed_)
+# rd_docker_bridge: docker0
+# rd_docker_bridge_ip_range: 172.17.0.0/16
