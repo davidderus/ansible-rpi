@@ -8,40 +8,49 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 ## Roles
 
-### Done
+### `common` role
 
-- `common`: Setup the Rpi with with updates and better security
-  - Locale setup
-  - System upgrade (*including kernel*)
-  - Adding some useful packages (*curl, vim, tmux, git…*)
-  - UFW firewall rules allowing user-specified ports and protocols
-  - Logwatch for system status emails (*via SSMTP*)
-  - SSH with key-only authentification
-  - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
-  - `oh-my-zsh` install and vim as default editor
-  - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
-  - Optionnal hostname update and Zeroconf
-  - Optionnal custom SSH banner
-  - Optionnal Wifi config
-  - Optionnal Mosh support
-  - Optionnal unsudo of the pi user
-- `download_server`: Turn the Rpi in a download server for ddl and torrents
-  - Aria2 daemon
-  - RPC interface for remote monitoring with optionnal SSL encryption
-  - Shared downloads directory (*may be replaced by a previously configured network folder*)
-- `media_center`: Turn your Raspberry into a decent customizable media center
-  - Kodi basic installation with separate user
-  - Dynamic sources creation (*may be linked to previously configured network folders*)
-  - Buffer handling optimized for a Raspberry
-  - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
-- `rpi_docker`: Setup and enable control of a distant Raspberry Pi Docker host via Ansible
-  - [HypriotOS](https://blog.hypriot.com/) oriented setup
-  - Docker containers and deamon are behind the firewall by default (*see Docker Support for more infos*)
-  - Ansible tools are setup (*allowing you to use docker_container, docker_image Ansible modules…*)
+> Setup the Rpi with with updates and better security
 
-### Incoming
+- Locale setup
+- System upgrade (*including kernel*)
+- Adding some useful packages (*curl, vim, tmux, git…*)
+- UFW firewall rules allowing user-specified ports and protocols
+- Logwatch for system status emails (*via SSMTP*)
+- SSH with key-only authentification
+- Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
+- `oh-my-zsh` install and vim as default editor
+- Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
+- Optionnal hostname update and Zeroconf
+- Optionnal custom SSH banner
+- Optionnal Wifi config
+- Optionnal Mosh support
+- Optionnal unsudo of the pi user
 
-- Segmentation into roles
+### `download_server` role
+
+> Turn the Rpi in a download server for ddl and torrents
+
+- Aria2 daemon
+- RPC interface for remote monitoring with optionnal SSL encryption
+- Shared downloads directory (*may be replaced by a previously configured network folder*)
+
+### `media_center` role
+
+> Turn your Raspberry into a decent customizable media center
+
+- Kodi basic installation with separate user
+- Dynamic sources creation (*may be linked to previously configured network folders*)
+- Buffer handling optimized for a Raspberry
+- Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
+
+### `rpi_docker` role
+
+> Setup and enable control of a distant Raspberry Pi Docker host via Ansible
+
+- [HypriotOS](https://blog.hypriot.com/) oriented setup
+- Docker containers and deamon are behind the firewall by default (*see Docker Support for more infos*)
+- Ansible tools are setup (*allowing you to use docker_container, docker_image Ansible modules…*)
 
 ## Setup
 
@@ -152,3 +161,10 @@ Docker-machine and Raspbian Docker support may come in a future release.
 - The `tlsverify` flag is enabled, and `tlscacert`, `tlscert`, `tlskey`
 - `LimitNOFILE` and `LimitNPROC` are set, but `LimitCORE` is not
 - iptables addition by Docker are deactivated
+
+## TODO
+
+- [] Sudoers file rewrite
+- [] Segmentation into roles
+- [] Contribution guidelines
+- [] …
