@@ -15,3 +15,5 @@ kodi_buffer_size: 139460608
 
 kodi_username: kodi
 kodi_user_dir: "/home/{{ kodi_username }}/.kodi"
+
+kodi_allow_reboot: true

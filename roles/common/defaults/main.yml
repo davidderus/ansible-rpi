@@ -32,3 +32,6 @@ automount_group: "{{ server_shared_group|default('root') }}"
 
 ssmtp_mailhub: smtp.gmail.com:587
 ssmtp_auth_user: "{{ ssmtp_email }}"
+
+server_allow_upgrade: true
+server_allow_reboot: true
