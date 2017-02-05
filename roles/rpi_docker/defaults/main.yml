@@ -9,3 +9,6 @@ rd_limit_nproc: 1048576
 rd_limit_core: infinity
 rd_iptables: false
 rd_always_restart: false
+
+rd_docker_bridge: docker0
+rd_docker_bridge_ip_range: 172.17.0.0/16

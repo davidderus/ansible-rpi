@@ -2,3 +2,6 @@
 
 - name: Restart docker
   systemd: name=docker state=restarted daemon_reload=yes
+
+- name: Restart ufw
+  systemd: name=ufw state=restarted

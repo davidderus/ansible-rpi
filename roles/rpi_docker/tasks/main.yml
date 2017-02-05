@@ -37,3 +37,26 @@
     # https://github.com/ansible/ansible/issues/20492
     #- { name: 'docker-py', version: '2.0' }
     - { name: 'docker-compose', version: '1.9.0' }
+
+- name: Update UFW default forward policy to ACCEPT
+  lineinfile:
+    dest=/etc/default/ufw
+    regexp='^DEFAULT_FORWARD_POLICY='
+    line='DEFAULT_FORWARD_POLICY="ACCEPT"'
+    state=present
+  when: not rd_iptables
+  notify:
+    - Restart ufw
+
+- name: Add Docker NAT rules for default docker bridge
+  blockinfile:
+    dest: /etc/ufw/before.rules
+    insertbefore: '\*filter'
+    block: |
+      *nat
+      :POSTROUTING ACCEPT [0:0]
+      -A POSTROUTING ! -o {{ rd_docker_bridge }} -s {{ rd_docker_bridge_ip_range }} -j MASQUERADE
+      COMMIT
+    backup: yes
+    state: present
+  when: not rd_iptables
