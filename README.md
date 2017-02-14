@@ -1,4 +1,4 @@
-# ansible-rpi 0.4.1
+# ansible-rpi 0.5.0
 
 ## Purpose
 
@@ -43,7 +43,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Dynamic sources creation (*may be linked to previously configured network folders*)
 - Buffer handling optimized for a Raspberry
 - Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
-- Optionnal Tvheadend install
+- Optionnal [Tvheadend](https://tvheadend.org/) install with basic config
 
 ### `rpi_docker` role
 
