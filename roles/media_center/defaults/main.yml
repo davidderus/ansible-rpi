@@ -1,4 +1,6 @@
 kodi_apt_repo: "deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /"
+kodi_tvheadend_apt_repo: "deb https://dl.bintray.com/tvheadend/deb {{ ansible_distribution_release }} release"
+
 openbox_config_dir: /home/{{ mc_user_name }}/.config/openbox
 
 # Arrays of filepaths
@@ -17,3 +19,7 @@ kodi_username: kodi
 kodi_user_dir: "/home/{{ kodi_username }}/.kodi"
 
 kodi_allow_reboot: true
+
+kodi_with_tvheadend: false
+kodi_tvheadend_username: admin
+kodi_tvheadend_password: admin

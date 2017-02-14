@@ -1,0 +1,50 @@
+---
+
+# Install process based on https://tvheadend.org/projects/tvheadend/wiki/AptRepository
+
+- name: Install apt-transport-https
+  apt: state=installed pkg=apt-transport-https
+
+- name: Add Tvheadend Repo
+  apt_repository:
+    repo: "{{ kodi_tvheadend_apt_repo }}"
+    state: present
+
+- name: Add Tvheadend Repo Key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 379CE192D401AB61
+    state: present
+
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Set Tvheadend User
+  debconf:
+    name: tvheadend
+    question: tvheadend/admin_username
+    vtype: string
+    value: "{{ kodi_tvheadend_username }}"
+
+- name: Set Tvheadend Password
+  debconf:
+    name: tvheadend
+    question: tvheadend/admin_password
+    vtype: password
+    value: "{{ kodi_tvheadend_password }}"
+
+- name: Install Tvheadend and Kodi PVR
+  apt: state=installed pkg={{ item }}
+  with_items:
+    - tvheadend
+    - kodi-pvr-hts
+
+- name: Enable Tvheadend service
+  service:
+    name: tvheadend
+    enabled: yes
+
+- name: Start Tvheadend service
+  service:
+    name: tvheadend
+    state: started

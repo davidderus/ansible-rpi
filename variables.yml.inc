@@ -57,6 +57,7 @@ allowed_ports:
   - { port: 6800, proto: 'tcp' } # Aria2 Daemon port
 # - { port: 8070, proto: 'tcp' } # Kodi HTTPServer Connection
 # - { port: 9777, proto: 'udp' } # Kodi EventServer Connection
+# - { port: 9981, proto: 'tcp' } # Tvheadend admin
 
 # Wifi handling (disabled by default)
 
@@ -127,6 +128,12 @@ with_vim: True
 # Kodi session name and password are updatable (_default password is `kodi`_)
 # kodi_username: kodi
 # kodi_password_hash: $6$iLBM8EeXOMRMb0I3$gRrJmyVcCeMl.JT7DKLG1XIYDl6/qq6FB99t.IO2Hy87ykxKLSZ0GUVqK/.N7N5gfQMJHiBAAApCM.geeia1z.
+
+# Enable tvheadend installation with the following line (disabled by default)
+# kodi_with_tvheadend: true
+# You can also change these default values:
+# kodi_tvheadend_username: admin
+# kodi_tvheadend_password: admin
 
 ###################
 # Rpi Docker Role #
