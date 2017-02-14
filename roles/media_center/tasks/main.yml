@@ -3,3 +3,6 @@
 - include: base.yml
 - include: desktop.yml
 - include: kodi.yml
+
+- include: tvheadend.yml
+  when: kodi_with_tvheadend

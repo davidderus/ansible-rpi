@@ -9,6 +9,7 @@
 - name: Create local devices folders
   file: dest=/mnt/{{ item.name }} state=directory mode=0770 group={{ automount_group }}
   with_items: "{{ automount_local_devices }}"
+  ignore_errors: yes # Ignore group errors on already mounted directories (next step will fail if its another error)
 
 - name: Mount local devices by label
   mount:
@@ -22,6 +23,7 @@
 - name: "Create remote folders for group {{ automount_group }}"
   file: dest=/media/{{ item.name }} state=directory mode=0770 group={{ automount_group }}
   with_items: "{{ automount_network_folders }}"
+  ignore_errors: yes # Ignore group errors on already mounted directories (next step will fail if its another error)
 
 - name: Mount remote folders
   mount:
