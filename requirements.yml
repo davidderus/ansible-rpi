@@ -1,1 +1,2 @@
-- src: jdauphant.unbound
+- src: https://github.com/davidderus/ansible-role-unbound.git
+  name: unbound-role
