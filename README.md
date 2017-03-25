@@ -1,4 +1,4 @@
-# ansible-rpi 0.5.0
+# ansible-rpi 0.6.0
 
 ## Purpose
 
@@ -52,6 +52,18 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - [HypriotOS](https://blog.hypriot.com/) oriented setup
 - Docker containers and deamon are behind the firewall by default (*see Docker Support for more infos*)
 - Ansible tools are setup (*allowing you to use docker_container, docker_image Ansible modules…*)
+
+### `unbound` role
+
+> Transform your Raspberry Pi into a DNS Server
+
+- Unbound setup & configuration
+- Add DNS entries
+- Generation of DNS entries from ansible inventory (A entries and reverse)
+- Forward to another DNS
+- IPv4 only for reverse
+
+*Note: Source code is in a [separate role](https://github.com/davidderus/ansible-role-unbound).*
 
 ## Setup
 
