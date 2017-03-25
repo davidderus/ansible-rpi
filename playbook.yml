@@ -31,3 +31,11 @@
     - rpi_docker
 
   become: yes
+
+- name: Setup a DNS
+
+  hosts: dns-servers
+  roles:
+    - unbound-role
+
+  become: yes
