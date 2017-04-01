@@ -8,7 +8,7 @@ server_locales:
 required_packages:
   - ufw
   - fail2ban # Using defaults
-  - unattended-upgrades # Using defaults
+  - unattended-upgrades
   - logwatch # Using defaults
   - rsync
   - htop

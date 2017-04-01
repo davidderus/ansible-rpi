@@ -44,3 +44,6 @@
         shell=/bin/bash
         append=yes
         state=present
+
+- name: Adjust APT update intervals
+  template: src=security/apt_periodic dest=/etc/apt/apt.conf.d/10periodic owner=root group=root mode=0644
