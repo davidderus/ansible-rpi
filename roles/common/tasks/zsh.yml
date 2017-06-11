@@ -7,10 +7,21 @@
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ server_user_name }}/.oh-my-zsh
 
 - name: Updates oh-my-zsh directory permissions
-  file: path=/home/{{ server_user_name }}/.oh-my-zsh owner={{ server_user_name }} group={{ server_user_name }} mode=0755
+  file:
+    path: '/home/{{ server_user_name }}/.oh-my-zsh'
+    owner: '{{ server_user_name }}'
+    group: '{{ server_user_name }}'
+    mode: 0755
+
+- name: Updates oh-my-zsh directory content permissions
+  file:
+    path: '/home/{{ server_user_name }}/.oh-my-zsh'
+    owner: '{{ server_user_name }}'
+    group: '{{ server_user_name }}'
+    recurse: 'yes'
 
 - name: Setup default zshrc
-  copy: remote_src=true src=/home/{{ server_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=/home/{{ server_user_name }}/.zshrc backup=yes mode=0644 group={{ server_user_name }}
+  copy: remote_src=true src=/home/{{ server_user_name }}/.oh-my-zsh/templates/zshrc.zsh-template dest=/home/{{ server_user_name }}/.zshrc backup=yes mode=0644 owner={{ server_user_name }} group={{ server_user_name }}
 
 - name: Change zsh theme
   lineinfile: dest=/home/{{ server_user_name }}/.zshrc regexp="^ZSH_THEME" line="ZSH_THEME=\"{{ server_zsh_theme|default('junkfood') }}\"" state=present
