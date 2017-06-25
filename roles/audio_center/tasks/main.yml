@@ -1,0 +1,62 @@
+---
+
+- name: Install librespot required packages
+  apt:
+    name: '{{ item }}'
+    state: latest
+  with_items: '{{ ac_required_packages }}'
+
+- name: Set default output to analog (this does not create a conflict with Kodi)
+  command: 'amixer -c 0 cset numid=3 1'
+
+- name: Set volume to 100%
+  command: "amixer sset 'Master' 100%"
+  become: false
+
+- name: 'Download armv7hf binary (for Rpi3) to {{ ac_respot_output_dir }}'
+  get_url:
+    url: '{{ ac_respot_url }}'
+    dest: '{{ ac_respot_binary }}'
+    checksum: 'sha256:{{ ac_respot_checksum }}'
+
+- name: Make binary executable
+  file:
+    path: '{{ ac_respot_binary }}'
+    owner: root
+    group: root
+    mode: 'u=rwx,g=rx,o=rx'
+
+- name: Build librespot directory
+  file:
+    path: '{{ ac_respot_user_dir }}'
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+    state: directory
+
+- name: Build cache directory
+  file:
+    path: '{{ ac_respot_cache_dir }}'
+    owner: root
+    group: root
+    mode: 'u=rw,g=r,o=r'
+    state: directory
+
+- name: Install librespot script
+  template:
+    src: librespot/librespot.sh.j2
+    dest: '{{ ac_respot_user_dir }}/librespot.sh'
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Install librespot service
+  template:
+    src: librespot/librespot.service.j2
+    dest: /etc/systemd/system/librespot.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable librespot on boot
+  service: name=librespot enabled=true state=restarted
