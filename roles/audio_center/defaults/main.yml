@@ -1,0 +1,14 @@
+---
+
+ac_respot_output_dir: /usr/local/lib
+ac_respot_binary: "{{ ac_respot_output_dir }}/librespot"
+ac_spotify_device_name: "{{ inventory_hostname }}"
+ac_respot_bitrate: 320
+ac_respot_device: hw:CARD=ALSA,DEV=0
+ac_respot_backend: alsa
+ac_respot_user_dir: '/etc/librespot'
+ac_respot_cache_dir: '{{ ac_respot_user_dir }}/cache'
+
+ac_required_packages:
+  - pulseaudio
+  - alsa-utils

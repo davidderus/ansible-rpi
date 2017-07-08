@@ -1,0 +1,4 @@
+---
+
+- name: Restart librespot
+  service: name=librespot state=restarted

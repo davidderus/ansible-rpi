@@ -39,3 +39,11 @@
     - unbound-role
 
   become: yes
+
+- name: Setup an Audio Server
+
+  hosts: audio-centers
+  roles:
+    - audio_center
+
+  become: yes

@@ -1,5 +1,10 @@
 ---
 
+- name: Installing aptitude
+  apt:
+    name: aptitude
+    state: latest
+
 - name: Update APT package cache
   apt: update_cache=yes cache_valid_time=3600
 
@@ -44,3 +49,6 @@
         shell=/bin/bash
         append=yes
         state=present
+
+- name: Adjust APT update intervals
+  template: src=security/apt_periodic dest=/etc/apt/apt.conf.d/10periodic owner=root group=root mode=0644

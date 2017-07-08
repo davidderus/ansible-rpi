@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# {{ ansible_managed }}
+
+# I'm not a very big fan of the Spotify password in a readable script launching
+# a world readable command. But that seems to be the only way for now
+# (see https://github.com/plietar/librespot/pull/24)
+
+{{ ac_respot_binary }} --username {{ ac_spotify_user }} \
+                       --password {{ ac_spotify_password }} \
+                       --name {{ ac_spotify_device_name }} \
+                       --bitrate {{ ac_respot_bitrate }} \
+                       --cache {{ ac_respot_cache_dir }} \
+                       --device {{ ac_respot_device }} \
+                       --backend {{ ac_respot_backend }}

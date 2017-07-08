@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=librespot daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart={{ ac_respot_user_dir }}/librespot.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
