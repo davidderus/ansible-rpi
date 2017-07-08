@@ -33,7 +33,7 @@
 
 - name: Enable SSH banner
   lineinfile: dest=/etc/ssh/sshd_config
-              regexp="^#Banner"
+              regexp="^#?Banner"
               line="Banner /etc/issue.net"
               state=present
   when: ssh_custom_banner
