@@ -1,4 +1,4 @@
-# ansible-rpi 0.6.0
+# ansible-rpi 0.7.0
 
 ## Purpose
 
@@ -64,6 +64,15 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - IPv4 only for reverse
 
 *Note: Source code is in a [separate role](https://github.com/davidderus/ansible-role-unbound).*
+
+### `audio_center` role
+
+> Turns your Raspberry into a Spotify player
+
+**This role requires a PREMIUM Spotify account**
+
+- Setup an headless Spotify Connect client ([librespot](https://github.com/plietar/librespot))
+- Update audio config
 
 ## Setup
 
