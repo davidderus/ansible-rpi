@@ -163,3 +163,23 @@ with_vim: True
 # Custom bridge (_if needed_)
 # rd_docker_bridge: docker0
 # rd_docker_bridge_ip_range: 172.17.0.0/16
+
+#####################
+# Audio Center Role #
+#####################
+
+# This role requires a PREMIUM Spotify account
+# The following variables are REQUIRED:
+#
+# ac_respot_url: https://url-to-a-valid-and-compatible-librespot-binary
+# ac_respot_checksum: 000000
+# ac_spotify_user: my-username
+# ac_spotify_password: my-password
+
+# These variables are optionnal:
+# ac_respot_output_dir: /usr/local/lib # directory where the binary is stored
+# ac_spotify_device_name: "{{ inventory_hostname }}" # device name used by Spotify
+# ac_respot_bitrate: 320 # Bitrate (320 is the maximum value)
+# ac_respot_device: hw:CARD=ALSA,DEV=0 # Audio device to play music with
+# ac_respot_backend: alsa # Audio backend
+# ac_respot_user_dir: '/etc/librespot' # librespot directory used to store cache
