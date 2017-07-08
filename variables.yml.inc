@@ -10,6 +10,9 @@ server_user_name: neo
 # Must be a SHA-512 hash with like 5000 rounds (not as much as Ansible password_hash – 656000 — otherwise authentification may take a while)
 server_user_password_hash: $6$KU0KJ6OtZYzWlhbj$HWRhIMQL37UfEBkR1nwKre08LbM9LvAZr/lZ7iHz9VW7AfSu88RaADbtoxfJEwiW3DaWIzKUnu8mweeTg9Qxw.
 
+# To set custom user groups, use to following variable:
+# server_user_groups: "…"
+
 # Updating locales if required (default to en_US.UTF-8)
 server_locales:
   - fr_FR.UTF-8
@@ -22,6 +25,13 @@ server_locales:
 # This is required for mixing server role with download_server and media_center
 # server_shared_group: mygroup
 
+# By default we allow server upgrade and reboot. You can disable this behaviour
+# with:
+# server_allow_upgrade: False
+# server_allow_reboot: False
+
+# Enable zsh with the line below:
+# with_zsh: True
 # server_zsh_theme: robbyrussell
 
 # SSMTP
