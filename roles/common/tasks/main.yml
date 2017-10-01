@@ -30,5 +30,11 @@
 # Super optionnal (may break current process if you're using the user)
 
 - include: user_unsudo.yml server_unsudo_user={{ item }}
-  with_items: "{{ server_unsudoed_users|default([]) }}"
+  with_items: "{{ server_unsudoed_users }}"
   when: server_unsudoed_users is defined
+
+- include: sudoers_nopasswd.yml
+  with_items: "{{ server_sudo_nopasswd_users }}"
+  loop_control:
+    loop_var: nopasswd_user
+  when: server_sudo_nopasswd_users is defined

@@ -98,6 +98,11 @@ with_vim: True
 # server_unsudoed_users:
 #   - pi
 
+# You can enable sudo access without password for specific users.
+# This is not the default behavior.
+# server_sudo_nopasswd_users:
+#   - neo
+
 ########################
 # Download server Role #
 ########################

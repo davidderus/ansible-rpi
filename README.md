@@ -26,6 +26,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Optionnal Wifi config
 - Optionnal Mosh support
 - Optionnal unsudo of the pi user
+- Optionnaly add a list of user to the sudoers with NOPASSWD
 
 ### `download_server` role
 

@@ -1,0 +1,9 @@
+---
+
+- name: "Add {{ nopasswd_user }} to sudoers with the NOPASSWD option"
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: "^%{{ nopasswd_user }} ALL="
+    line: "%{{ nopasswd_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: '/usr/sbin/visudo -cf %s'
