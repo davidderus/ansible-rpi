@@ -21,19 +21,19 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
 - `oh-my-zsh` install and vim as default editor
 - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
-- Optionnal hostname update and Zeroconf
-- Optionnal custom SSH banner
-- Optionnal Wifi config
-- Optionnal Mosh support
-- Optionnal unsudo of the pi user
-- Optionnaly add a list of user to the sudoers with NOPASSWD
+- Optional hostname update and Zeroconf
+- Optional custom SSH banner
+- Optional Wifi config
+- Optional Mosh support
+- Optional unsudo of the pi user
+- Optionaly add a list of user to the sudoers with NOPASSWD
 
 ### `download_server` role
 
 > Turn the Rpi in a download server for ddl and torrents
 
 - Aria2 daemon
-- RPC interface for remote monitoring with optionnal SSL encryption
+- RPC interface for remote monitoring with optional SSL encryption
 - Shared downloads directory (*may be replaced by a previously configured network folder*)
 
 ### `media_center` role
@@ -43,8 +43,8 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Kodi basic installation with separate user
 - Dynamic sources creation (*may be linked to previously configured network folders*)
 - Buffer handling optimized for a Raspberry
-- Optionnal `kodi` user with `kodi-standalone` and a minimal Openbox setup
-- Optionnal [Tvheadend](https://tvheadend.org/) install with basic config
+- Optional `kodi` user with `kodi-standalone` and a minimal Openbox setup
+- Optional [Tvheadend](https://tvheadend.org/) install with basic config
 
 ### `rpi_docker` role
 
@@ -100,7 +100,7 @@ required to enable it.**).
 
 Then the first time run:
 
-```
+```shell
 ansible-playbook playbook.yml -u pi --ask-pass
 ```
 
@@ -111,13 +111,13 @@ vault.**
 
 First run:
 
-```
+```shell
 ansible-playbook playbook.yml -i hosts.dev
 ```
 
 Next runs:
 
-```
+```shell
 # Editing the hosts file may be required to update the SSH port
 # A vagrant reload may also be needed
 # Checks access with
@@ -140,7 +140,7 @@ This may cause axtra slowness on user authentification (*ie. sudo password promp
 
 Please use the following command to generate a user password hash [2]:
 
-```bash
+```shell
 python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass(), rounds=5000)"
 ```
 
