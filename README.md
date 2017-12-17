@@ -21,7 +21,8 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Custom sudo user for rpi (*thus disabling pi as Rpi sudoer*)
 - `oh-my-zsh` install and vim as default editor
 - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
-- Fail2Ban configuration to send mail via SSMTP and handle custom SSH port
+- Fail2Ban configuration to send mail via SSMTP, handle a custom SSH port and
+  some user-defined services
 - Optional hostname update and Zeroconf
 - Optional custom SSH banner
 - Optional Wifi config
