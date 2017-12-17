@@ -1,4 +1,4 @@
-# ansible-rpi 0.7.0
+# ansible-rpi 0.8.0
 
 ## Purpose
 
