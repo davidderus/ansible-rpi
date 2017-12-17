@@ -19,7 +19,7 @@
 - name: Send more than an ip on jailed
   lineinfile:
     path: '{{ server_fail2ban_jail_file }}'
-    regexp: '^action\s+=\s+\%\(action_\)s$'
+    regexp: '^action\s+=\s+\%\(action_\w+\)s'
     line: 'action = %(action_mwl)s'
     state: present
   notify: Restart fail2ban
