@@ -23,3 +23,12 @@
     line: 'action = %(action_mwl)s'
     state: present
   notify: Restart fail2ban
+
+- name: Generate jail.local file
+  template:
+    src: fail2ban/jail.local.j2
+    dest: '{{ server_fail2ban_jail_local_file }}'
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart fail2ban
