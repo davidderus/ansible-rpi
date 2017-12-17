@@ -4,12 +4,17 @@
 
 - include: base.yml
 - include: ssh.yml
-- include: firewall.yml
 
 - include: hostname.yml
   when: with_custom_hostname
 
 - include: ssmtp.yml
+
+- include: fail2ban.yml
+  tags: fail2ban
+
+- include: firewall.yml
+
 - include: logwatch.yml
 
 # Optionnals

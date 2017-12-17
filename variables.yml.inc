@@ -103,6 +103,18 @@ with_vim: True
 # server_sudo_nopasswd_users:
 #   - neo
 
+# Fail2Ban
+
+server_fail2ban_services:
+  - name: apache-auth-custom
+    enabled: true
+    port: http,https
+    filter: apache-auth
+    logpath: '/custom/apache/log/file.log'
+    maxretry: 3
+
+server_fail2ban_email: admin+fail2ban@gmail.com
+
 ########################
 # Download server Role #
 ########################
