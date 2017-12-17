@@ -35,3 +35,8 @@ ssmtp_auth_user: "{{ ssmtp_email }}"
 
 server_allow_upgrade: true
 server_allow_reboot: true
+
+server_fail2ban_jail_file: /etc/fail2ban/jail.conf
+server_fail2ban_jail_local_file: /etc/fail2ban/jail.local
+server_fail2ban_services: []
+server_fail2ban_email: '{{ ssmtp_email }}'

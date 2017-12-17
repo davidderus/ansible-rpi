@@ -1,0 +1,34 @@
+---
+
+- name: Update ssh port in config
+  replace:
+    path: '{{ server_fail2ban_jail_file }}'
+    regexp: '^port\s+=\s+ssh$'
+    replace: 'port = {{ ssh_port }}'
+  notify: Restart fail2ban
+  when: ssh_port is defined and ssh_port != 22
+
+- name: Update email in config
+  lineinfile:
+    path: '{{ server_fail2ban_jail_file }}'
+    regexp: '^destemail\s+='
+    line: 'destemail = {{ server_fail2ban_email }}'
+    state: present
+  notify: Restart fail2ban
+
+- name: Send more than an ip on jailed
+  lineinfile:
+    path: '{{ server_fail2ban_jail_file }}'
+    regexp: '^action\s+=\s+\%\(action_\w+\)s'
+    line: 'action = %(action_mwl)s'
+    state: present
+  notify: Restart fail2ban
+
+- name: Generate jail.local file
+  template:
+    src: fail2ban/jail.local.j2
+    dest: '{{ server_fail2ban_jail_local_file }}'
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart fail2ban

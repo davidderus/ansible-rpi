@@ -98,6 +98,23 @@ with_vim: True
 # server_unsudoed_users:
 #   - pi
 
+# You can enable sudo access without password for specific users.
+# This is not the default behavior.
+# server_sudo_nopasswd_users:
+#   - neo
+
+# Fail2Ban
+
+server_fail2ban_services:
+  - name: apache-auth-custom
+    enabled: true
+    port: http,https
+    filter: apache-auth
+    logpath: '/custom/apache/log/file.log'
+    maxretry: 3
+
+server_fail2ban_email: admin+fail2ban@gmail.com
+
 ########################
 # Download server Role #
 ########################

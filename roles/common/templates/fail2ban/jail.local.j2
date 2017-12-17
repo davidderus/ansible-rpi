@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+
+{% for service in server_fail2ban_services %}
+[{{ service.name }}]
+
+enabled = {{ '"%s"' | format(service.enabled | lower) }}
+port = {{ service.port }}
+filter = {{ service.filter }}
+logpath = {{ service.logpath }}
+{% if service.maxretry is defined %}
+maxretry = {{ service.maxretry }}
+{% endif %}
+{% if service.protocol is defined %}
+protocol = {{ service.protocol }}
+{% endif %}
+{% if service.action is defined %}
+action = %({{ service.action }})s
+{% endif %}
+{% if service.banaction is defined %}
+banaction = {{ service.banaction }}
+{% endif %}
+
+{% endfor %}

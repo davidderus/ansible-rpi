@@ -5,3 +5,8 @@
 
 - name: Reload firewall
   ufw: state=reloaded
+
+- name: Restart fail2ban
+  service:
+    name: fail2ban
+    state: restarted
