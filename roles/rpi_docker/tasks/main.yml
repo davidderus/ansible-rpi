@@ -57,6 +57,9 @@
       :POSTROUTING ACCEPT [0:0]
       -A POSTROUTING ! -o {{ rd_docker_bridge }} -s {{ rd_docker_bridge_ip_range }} -j MASQUERADE
       COMMIT
+      *filter
+      -A FORWARD -o {{ rd_docker_bridge }} -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+      COMMIT
     backup: yes
     state: present
   when: not rd_iptables
