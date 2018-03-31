@@ -36,7 +36,22 @@ ssmtp_auth_user: "{{ ssmtp_email }}"
 server_allow_upgrade: true
 server_allow_reboot: true
 
+# fail2ban
+
 server_fail2ban_jail_file: /etc/fail2ban/jail.conf
 server_fail2ban_jail_local_file: /etc/fail2ban/jail.local
 server_fail2ban_services: []
 server_fail2ban_email: '{{ ssmtp_email }}'
+
+# unattended-upgrade
+
+server_unattended_upgrades_config: /etc/apt/apt.conf.d/50unattended-upgrades
+server_unattended_upgrades_origins: []
+
+server_unattended_upgrades_blacklist: []
+
+server_unattended_upgrades_auto_reboot: False
+server_unattended_upgrades_reboot_time: null
+
+server_unattended_upgrades_send_email: False
+server_unattended_upgrades_email: 'root'

@@ -1,4 +1,4 @@
-# ansible-rpi 0.7.0
+# ansible-rpi 0.8.0
 
 ## Purpose
 
@@ -23,6 +23,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 - Dynamic network folder and local drive setup (*Works with SAMBA and include basic credentials management*)
 - Fail2Ban configuration to send mail via SSMTP, handle a custom SSH port and
   some user-defined services
+- unattended-upgrades support
 - Optional hostname update and Zeroconf
 - Optional custom SSH banner
 - Optional Wifi config

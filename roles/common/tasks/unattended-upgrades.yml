@@ -1,0 +1,17 @@
+---
+
+- name: Update unattended-upgrades configuration
+  template:
+    src: security/50unattended-upgrades.j2
+    dest: '{{ server_unattended_upgrades_config }}'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Adjust APT update intervals
+  template:
+    src: security/apt_periodic
+    dest: /etc/apt/apt.conf.d/10periodic
+    owner: root
+    group: root
+    mode: 0644
