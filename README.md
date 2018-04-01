@@ -75,7 +75,7 @@ Tested on a Rpi 3 B+ and a Rpi 1 B.
 
 **This role requires a PREMIUM Spotify account**
 
-- Setup an headless Spotify Connect client ([librespot](https://github.com/plietar/librespot))
+- Setup an headless Spotify Connect client ([librespot](https://github.com/librespot-org/librespot))
 - Update audio config
 
 ## Setup

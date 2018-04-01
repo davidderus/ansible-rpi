@@ -13,18 +13,15 @@
   command: "amixer sset 'Master' 100%"
   become: false
 
-- name: 'Download armv7hf binary (for Rpi3) to {{ ac_respot_output_dir }}'
-  get_url:
-    url: '{{ ac_respot_url }}'
+# See https://github.com/librespot-org/librespot/wiki/Cross-compiling for
+#   instructions to build the binary
+- name: 'Copy binary to {{ ac_respot_output_dir }}'
+  copy:
+    src: '{{ ac_respot_local_binary }}'
     dest: '{{ ac_respot_binary }}'
-    checksum: 'sha256:{{ ac_respot_checksum }}'
-
-- name: Make binary executable
-  file:
-    path: '{{ ac_respot_binary }}'
     owner: root
     group: root
-    mode: 'u=rwx,g=rx,o=rx'
+    mode: 0700
 
 - name: Build librespot directory
   file:

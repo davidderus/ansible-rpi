@@ -1,5 +1,6 @@
 ---
 
+ac_respot_local_binary: binaries/librespot
 ac_respot_output_dir: /usr/local/lib
 ac_respot_binary: "{{ ac_respot_output_dir }}/librespot"
 ac_spotify_device_name: "{{ inventory_hostname }}"
